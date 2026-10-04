@@ -1,0 +1,16 @@
+{
+  "rule_id": "test_doc.res_plotted.far.bad_extra",
+  "title": "INVALID — unknown top-level field (additionalProperties: false must fail)",
+  "parameter": "far",
+  "applicability": { "land_use": "residential_plotted", "authority": "DDA", "conditions": [] },
+  "output": { "type": "scalar", "value": null, "unit": "far_x100" },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    { "doc_id": "test_doc", "clause": null, "page": null, "bbox": null, "original_text": null, "original_lang": "en", "translated_text": null }
+  ],
+  "verification": { "status": "draft", "verified_by": null, "verified_on": null, "method": "llm_extraction_v1", "confidence": 0.5 },
+  "notes": "",
+  "comment": "fields not in the schema must be rejected"
+}

@@ -1,0 +1,623 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.indicodes.com/schemas/rule.schema.json",
+  "title": "Indicodes rules-as-code rule file (normative, spec.md §3)",
+  "description": "One JSON file per rule under rules/<doc>/<rule_id>.json. Schema enforces structure and the spec §3.4 verified-rule completeness constraints. Cross-file invariants (doc_id registered in sources/sources.json, supersedes target exists, exactly-one-rule-per-parameter resolution) are enforced by `pnpm rules:validate` code, not by this schema. Regulatory values enter only via the extraction + human-verification pipeline (CLAUDE.md principle 3).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rule_id",
+    "title",
+    "parameter",
+    "applicability",
+    "output",
+    "effective_from",
+    "effective_to",
+    "supersedes",
+    "citations",
+    "verification",
+    "notes"
+  ],
+  "properties": {
+    "rule_id": {
+      "description": "Dot-namespaced stable identifier: <doc>.<domain>.<parameter>.<band>. Must match the file name (<rule_id>.json) — checked by rules:validate.",
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+){1,5}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5
+    },
+    "parameter": {
+      "description": "Closed set per spec §3.1. Extending this enum is a spec change (update spec.md in the same PR).",
+      "enum": [
+        "far",
+        "ground_coverage_pct",
+        "max_height_m",
+        "setback_front_m",
+        "setback_rear_m",
+        "setback_side_m",
+        "dwelling_units",
+        "parking_ecs_per_100sqm",
+        "basement_permissibility",
+        "stilt_height_bonus_m",
+        "stilt_far_exemption"
+      ]
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "land_use",
+        "authority",
+        "conditions"
+      ],
+      "properties": {
+        "land_use": {
+          "description": "MVP is plotted residential only (PRD §4). New land uses are a PRD change.",
+          "enum": [
+            "residential_plotted"
+          ]
+        },
+        "authority": {
+          "enum": [
+            "DDA"
+          ]
+        },
+        "conditions": {
+          "description": "Conjunction of fact predicates (spec §3.2). Disjunctions are separate rules. Empty array = applies to all parcels matching land_use + authority.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        }
+      }
+    },
+    "output": {
+      "description": "spec §3.3. Formula LOGIC lives in packages/engine/src/formulas/; only formula CONSTANTS live here.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/outputScalar"
+        },
+        {
+          "$ref": "#/$defs/outputBoolean"
+        },
+        {
+          "$ref": "#/$defs/outputFormula"
+        },
+        {
+          "$ref": "#/$defs/outputFlag"
+        }
+      ]
+    },
+    "effective_from": {
+      "$ref": "#/$defs/isoDateOrNull"
+    },
+    "effective_to": {
+      "description": "Set implicitly by the loader when a superseding rule exists (spec §3.5). May be authored explicitly when the source itself states an end date.",
+      "$ref": "#/$defs/isoDateOrNull"
+    },
+    "supersedes": {
+      "description": "rule_id of the rule version this one replaces (spec §3.5). Never edit a verified rule's values — supersede it.",
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+){1,5}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "citations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/citation"
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "verified_by",
+        "verified_on",
+        "method",
+        "confidence"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "verified",
+            "rejected"
+          ]
+        },
+        "verified_by": {
+          "description": "Verifier identifier. Two-person rule: must differ from the extraction reviewer (checked in code, spec §4).",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "verified_on": {
+          "$ref": "#/$defs/isoDateOrNull"
+        },
+        "method": {
+          "description": "Provenance of the draft, e.g. llm_extraction_v1, manual_entry. Versioned with pipeline/prompts/.",
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "confidence": {
+          "description": "Extraction-stage confidence in [0,1]; null once verified (human verification supersedes model confidence).",
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "consumes_terms": {
+      "description": "Terms this rule's value depends on for its meaning, matching `term` in rules/definitions/*.json — e.g. a FAR rule consumes \"plot area\" and \"built-up area\". Optional and additive: a rule that declares nothing is not asserting it depends on nothing, only that the dependency has not been recorded yet. `pnpm rules:validate` fails a VERIFIED rule that consumes a term with no verified definition in force, which is what stops a checked number resting on an unchecked word.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2 }
+    },
+    "user_caveat": {
+      "description": "Optional caveat shown to end users beside the value: a condition the bare number does not express (fire clearance, regularization relief, an asymmetry we cannot represent). Distinct from notes, which is the verifier's internal record — band-boundary reasoning and extraction provenance must never reach a user. Absent or null means the value stands on its own.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 2
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "description": "spec §3.4 — a verified rule must be complete: non-null effective_from, non-null output value/constants, verifier identity, and a first citation with clause + page.",
+      "if": {
+        "properties": {
+          "verification": {
+            "properties": {
+              "status": {
+                "const": "verified"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "effective_from": {
+            "type": "string"
+          },
+          "verification": {
+            "properties": {
+              "verified_by": {
+                "type": "string"
+              },
+              "verified_on": {
+                "type": "string"
+              }
+            }
+          },
+          "citations": {
+            "prefixItems": [
+              {
+                "properties": {
+                  "clause": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "page": {
+                    "type": "integer"
+                  }
+                }
+              }
+            ]
+          },
+          "output": {
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "type": {
+                      "const": "scalar"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "type": {
+                      "const": "boolean"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "type": {
+                      "const": "formula"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "params": {
+                      "additionalProperties": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "isoDateOrNull": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fact",
+        "op",
+        "value"
+      ],
+      "properties": {
+        "fact": {
+          "description": "Closed fact vocabulary usable in predicates (spec §5.1). land_use/authority are applicability-level; special areas are handled by the spatial service, not rule conditions.",
+          "enum": [
+            "plot_area_sqm",
+            "road_width_m",
+            "roads_abutting",
+            "is_corner_plot",
+            "stilt_parking",
+            "basement_intended"
+          ]
+        },
+        "op": {
+          "enum": [
+            "eq",
+            "neq",
+            "lt",
+            "lte",
+            "gt",
+            "gte",
+            "in",
+            "between"
+          ]
+        },
+        "value": true
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "between"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "description": "Inclusive-exclusive [lo, hi) — band boundaries belong to exactly one band. The engine implements this semantic; tests must cover exact-boundary facts.",
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "const": "in"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": [
+                    "number",
+                    "string"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "eq",
+                  "neq",
+                  "lt",
+                  "lte",
+                  "gt",
+                  "gte"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": [
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fact": {
+                "enum": [
+                  "is_corner_plot",
+                  "stilt_parking",
+                  "basement_intended"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "op": {
+                "enum": [
+                  "eq",
+                  "neq"
+                ]
+              },
+              "value": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "outputScalar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "value",
+        "unit"
+      ],
+      "properties": {
+        "type": {
+          "const": "scalar"
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "far_x100",
+            "pct",
+            "m",
+            "sqm",
+            "count",
+            "ecs_per_100sqm"
+          ]
+        }
+      }
+    },
+    "outputBoolean": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "value"
+      ],
+      "properties": {
+        "type": {
+          "const": "boolean"
+        },
+        "value": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "outputFormula": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "formula_id",
+        "params"
+      ],
+      "properties": {
+        "type": {
+          "const": "formula"
+        },
+        "formula_id": {
+          "description": "Must exist in packages/engine/src/formulas/ registry — checked by rules:validate.",
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "params": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "outputFlag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "code",
+        "message"
+      ],
+      "properties": {
+        "type": {
+          "const": "flag"
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 5
+        }
+      }
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doc_id",
+        "clause",
+        "page",
+        "bbox",
+        "original_text",
+        "original_lang",
+        "translated_text"
+      ],
+      "properties": {
+        "doc_id": {
+          "description": "Must be registered in sources/sources.json — checked by rules:validate.",
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "clause": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bbox": {
+          "description": "Page-relative [x0, y0, x1, y1] in 0..1 for the citation viewer highlight; null when not yet anchored.",
+          "oneOf": [
+            {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "original_lang": {
+          "enum": [
+            "hi",
+            "en",
+            null
+          ]
+        },
+        "translated_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$comment": [
+    "Provisions that set a MINIMUM a band row cannot undercut.",
+    "",
+    "MPD-2021 p.64 (ii): coverage and FAR in any plot 'shall not be less than",
+    "that permissible and available to the largest plot in the next lower",
+    "category'. The engine resolves band rows one at a time, so without this",
+    "file it served a row's ratio even where that gives less than the largest",
+    "plot below already has — FAR 225% on a 300 m² plot is 675 m², where the",
+    "row below gives a 250 m² plot 750 m² at 300%.",
+    "",
+    "An entry here is a citation, not a value: which parameters and which",
+    "documents the provision governs, and its words verbatim. The runtime uses",
+    "it only to DECLINE where a row is undercut. It does not compute the higher",
+    "figure — whether the minimum is an area, and how it interacts with",
+    "setbacks and height, is a reading for the verifier (docs/tasks.md).",
+    "",
+    "MPD-2047 (p.177, iii) and the UBBL 2016 compendium (p.153, ii) carry the",
+    "same words. Add an entry for a document when its FAR or coverage rules are",
+    "verified: applies_to_docs scopes the clause to the rows it governs, so an",
+    "MPD-2021 citation can never be shown against an MPD-2047 number."
+  ],
+  "provisions": [
+    {
+      "id": "mpd2021_mod_2022.res_plotted.category_floor",
+      "parameters": ["far", "ground_coverage_pct"],
+      "fact": "plot_area_sqm",
+      "applies_to_docs": ["mpd2021_mod_2022"],
+      "citation": {
+        "doc_id": "mpd2021_mod_2022",
+        "clause": "ii",
+        "page": 64,
+        "bbox": [0.3176, 0.0855, 0.8754, 0.1356],
+        "original_text": "The total coverage and FAR permissible in any plot in a category, shall not be less than that permissible and available to the largest plot in the next lower category.",
+        "original_lang": "en",
+        "translated_text": null
+      }
+    }
+  ]
+}

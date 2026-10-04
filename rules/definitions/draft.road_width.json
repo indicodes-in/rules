@@ -1,0 +1,25 @@
+{
+  "definition_id": "draft.road_width",
+  "term": "road width",
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": null,
+    "original_lang": null,
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "manual_entry",
+    "confidence": null
+  },
+  "notes": "TODO(verify): locate the governing definition of \"road width\" in the source documents, quote it verbatim with clause and page, and supersede this draft with a doc-prefixed definition_id. Setbacks and permissible height band on the abutting road width. Whether the width is the carriageway, the right of way, or the notified plan width changes which band a plot falls in. No text is recorded here on purpose — a definition written from general knowledge is exactly what CLAUDE.md principle 3 forbids."
+}

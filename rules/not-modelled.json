@@ -1,0 +1,26 @@
+{
+  "$comment": [
+    "Parameters we have DELIBERATELY not encoded, and why.",
+    "",
+    "Distinct from rules/known-gaps.json, which records gaps in the printed",
+    "regulation itself. These are gaps in OUR model, chosen on purpose.",
+    "",
+    "Without this file the runtime cannot tell a deliberate omission from a",
+    "missing rule, so it told users to 'report this plot' for a parameter we",
+    "had decided not to model — on every ordinary plot. A flag that cries wolf",
+    "teaches people to ignore the flags that matter, and this product's whole",
+    "claim is that its refusals mean something.",
+    "",
+    "The reason for stilt_height_bonus_m was recorded only in a commit message",
+    "(db1c3fd), where nothing at runtime could read it. Adding an entry here is",
+    "a scope statement, not a regulatory value: it says what we chose not to",
+    "encode, never what a regulation permits."
+  ],
+  "parameters": [
+    {
+      "parameter": "stilt_height_bonus_m",
+      "reason": "Height is given as absolute values, not a base plus a bonus — max height is cited directly for both the stilt and no-stilt cases.",
+      "see": ["ubbl2016_compendium_2020.res_plotted.max_height_m.no_stilt", "ubbl2016_compendium_2020.res_plotted.max_height_m.with_stilt"]
+    }
+  ]
+}

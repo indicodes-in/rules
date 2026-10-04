@@ -1,0 +1,48 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.setback_rear_m.upto_100",
+  "title": "Rear setback 0 m for plots below 100 sqm — clause x setback table row 1",
+  "parameter": "setback_rear_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "lt",
+        "value": 100
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 0,
+    "unit": "m"
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "x Table",
+      "page": 154,
+      "bbox": [
+        0.0877,
+        0.4612,
+        0.7931,
+        0.4736
+      ],
+      "original_text": "1  Below 100  0  0  0  0",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.93
+  },
+  "notes": "'Below 100' — boundary value 100 belongs to the next band."
+}

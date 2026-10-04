@@ -1,0 +1,51 @@
+{
+  "rule_id": "mpd2047.res_plotted.dwelling_units.750_1000",
+  "title": "Max 7 dwelling units for plots above 750 up to 1000 sqm (Plotted Housing table, row 5)",
+  "parameter": "dwelling_units",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          750,
+          1000
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 7,
+    "unit": "count"
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": null,
+      "page": 177,
+      "bbox": [
+        0.2576,
+        0.1872,
+        0.8408,
+        0.202
+      ],
+      "original_text": "5. Above 750 up to 1000 50 200 7",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Prose 'Above 750 up to 1000': 750 belongs to LOWER band, 1000 belongs to THIS band."
+}

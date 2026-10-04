@@ -1,0 +1,49 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.max_height_m.with_stilt",
+  "title": "Max building height 17.5m for plotted housing with stilt parking (Terms & conditions iii)",
+  "parameter": "max_height_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "stilt_parking",
+        "op": "eq",
+        "value": true
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 17.5,
+    "unit": "m"
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "Terms and conditions (iii)",
+      "page": 153,
+      "bbox": [
+        0.0811,
+        0.7627,
+        0.9226,
+        0.7751
+      ],
+      "original_text": "Height: the maximum height for building shall be 15m in plots without stilt parking and 17.5m in plots with stilt parking.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.93
+  },
+  "notes": "Such building not considered high rise; Fire Department clearance required by plot owner.",
+  "user_caveat": "At this height the building is not classed as high-rise, but Fire Department clearance remains the plot owner's responsibility."
+}

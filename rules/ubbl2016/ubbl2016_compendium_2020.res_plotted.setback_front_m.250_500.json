@@ -1,0 +1,51 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.setback_front_m.250_500",
+  "title": "Front setback 3 m for plots above 250 up to 500 sqm — clause x setback table row 3",
+  "parameter": "setback_front_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          250,
+          500
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 3,
+    "unit": "m"
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "x Table",
+      "page": 154,
+      "bbox": [
+        0.0877,
+        0.499,
+        0.7931,
+        0.5113
+      ],
+      "original_text": "3  Above 250 and up to 500  3  3  3  0",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "'Above 250 and up to 500' — 250 excluded, 500 included per prose. Encoded [250,500)."
+}

@@ -1,0 +1,48 @@
+{
+  "rule_id": "mpd2047.res_plotted.max_height_m.without_stilt",
+  "title": "Max building height 15m (Ground+3 habitable floors) in plots without stilt parking, clause (iv)",
+  "parameter": "max_height_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "stilt_parking",
+        "op": "eq",
+        "value": false
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 15,
+    "unit": "m"
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": "(iv)",
+      "page": 177,
+      "bbox": [
+        0.1101,
+        0.4821,
+        0.8837,
+        0.5357
+      ],
+      "original_text": "Maximum height of the building shall be 15m (i.e. Ground+3 habitable floors) in plots without stilt parking. In plots with stilt parking height of the building shall be upto 17.5m (i.e. stilt + 4 habitable floors).",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "15m corresponds to Ground+3 habitable floors, without stilt parking."
+}

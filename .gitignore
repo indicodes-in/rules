@@ -1,0 +1,12 @@
+node_modules/
+coverage/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.env
+.env.*
+.DS_Store
+# Source PDFs are not redistributed; see sources/README.md
+sources/files/

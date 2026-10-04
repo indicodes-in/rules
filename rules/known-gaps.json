@@ -1,0 +1,37 @@
+{
+  "$comment": [
+    "Band gaps that exist in the SOURCE REGULATION, not in our encoding.",
+    "`pnpm rules:validate` fails on any band gap not listed here, so an",
+    "accidental encoding hole can never ship quietly. Adding an entry is a",
+    "claim about the printed table and needs the same scrutiny as a rule:",
+    "quote the two rows and say why the gap is real.",
+    "At runtime these surface as the `source_band_gap` flag, which names both",
+    "neighbouring rows and declines to compute (spec §9)."
+  ],
+  "gaps": [
+    {
+      "parameter": "setback_front_m",
+      "fact": "plot_area_sqm",
+      "from": 100,
+      "to": 100,
+      "reason": "UBBL 2016 setback table (compendium p.154): row 1 reads 'Below 100', row 2 reads 'Above 100 and up to 250'. A plot of exactly 100 m² is in neither row. The gap is in the bye-law as printed.",
+      "resolution": "Open — see docs/tasks.md. Needs the verifying architect to decide whether DDA practice reads row 1 or row 2 as governing 100 m² exactly, with a citable basis. Until then the engine declines."
+    },
+    {
+      "parameter": "setback_rear_m",
+      "fact": "plot_area_sqm",
+      "from": 100,
+      "to": 100,
+      "reason": "Same table row as setback_front_m — 'Below 100' / 'Above 100 and up to 250' leave 100 m² uncovered.",
+      "resolution": "Open — see docs/tasks.md."
+    },
+    {
+      "parameter": "setback_side_m",
+      "fact": "plot_area_sqm",
+      "from": 100,
+      "to": 100,
+      "reason": "Same table row as setback_front_m — 'Below 100' / 'Above 100 and up to 250' leave 100 m² uncovered.",
+      "resolution": "Open — see docs/tasks.md."
+    }
+  ]
+}

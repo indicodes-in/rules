@@ -1,0 +1,51 @@
+{
+  "rule_id": "mpd2021_mod_2022.res_plotted.far.750_1000",
+  "title": "FAR 200 for plots above 750 to 1000 sqm (residential plotted table, row 5)",
+  "parameter": "far",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          750,
+          1000
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 200,
+    "unit": "far_x100"
+  },
+  "effective_from": "2014-11-26",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "clause": "Development control norms for residential plots (table)",
+      "page": 63,
+      "bbox": [
+        0.2812,
+        0.2134,
+        0.8411,
+        0.2276
+      ],
+      "original_text": "5 2[Above 750 to 1000 50 200 9",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Row begins footnote 2 bracket '2[' (rows 5–10 modified vide S.O. 2983(E) dated 26-11-2014). Prose 'Above 750 to 1000': 750 belongs to lower band, 1000 to this band — verifier to confirm [750,1000). Note 5: FAR not less than MPD-2001 norms."
+}

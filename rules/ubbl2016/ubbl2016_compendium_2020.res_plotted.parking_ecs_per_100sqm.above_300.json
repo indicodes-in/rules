@@ -1,0 +1,51 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.parking_ecs_per_100sqm.above_300",
+  "title": "Parking 1 ECS per 100 sqm built-up area for plots exceeding 300 sqm (plotted residential, clause viii.b)",
+  "parameter": "parking_ecs_per_100sqm",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "gt",
+        "value": 300
+      }
+    ]
+  },
+  "output": {
+    "type": "formula",
+    "formula_id": "ecs_per_bua",
+    "params": {
+      "ecs_per_100sqm": 1
+    }
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "viii.b",
+      "page": 154,
+      "bbox": [
+        0.0811,
+        0.2876,
+        0.9225,
+        0.3413
+      ],
+      "original_text": "b. 1 ECS for every 100sq.m. built up area, in plots exceeding 300 sq.m, provided that, if the permissible coverage and FAR is not achieved with the above mentioned parking norms in a plot, the parking norms of the preceding category shall be allowed.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "manual_entry",
+    "confidence": null
+  },
+  "notes": "Plotted-residential parking for plots > 300 sqm (page 154, clause viii.b): 1 ECS per 100 sqm built-up area. The proviso (fall back to the preceding category's norm if coverage/FAR cannot be met) is not modelled. Replaces the earlier draft that wrongly used the group-housing 2.0 ECS/100sqm from page 156.",
+  "user_caveat": "The proviso allowing a fall back to the preceding category's norm where coverage or FAR cannot otherwise be met is not modelled here."
+}

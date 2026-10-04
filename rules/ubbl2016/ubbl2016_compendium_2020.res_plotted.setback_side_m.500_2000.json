@@ -1,0 +1,51 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.setback_side_m.500_2000",
+  "title": "Side setback 3 m (both sides) for plots above 500 up to 2000 sqm — clause x setback table row 4",
+  "parameter": "setback_side_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          500,
+          2000
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 3,
+    "unit": "m"
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "x Table",
+      "page": 154,
+      "bbox": [
+        0.0877,
+        0.5178,
+        0.7931,
+        0.5302
+      ],
+      "original_text": "4  Above 500 and up to 2000  6  3  3  3",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "Side(1)=3 and Side(2)=3; both equal. '500 excluded, 2000 included' per prose; encoded [500,2000)."
+}

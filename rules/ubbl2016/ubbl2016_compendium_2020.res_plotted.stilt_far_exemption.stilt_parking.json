@@ -1,0 +1,48 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.stilt_far_exemption.stilt_parking",
+  "title": "Stilt area (non-habitable, <2.4 m) used for parking excluded from FAR, counted towards height (plotted residential, clause vii)",
+  "parameter": "stilt_far_exemption",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "stilt_parking",
+        "op": "eq",
+        "value": true
+      }
+    ]
+  },
+  "output": {
+    "type": "boolean",
+    "value": true
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "vii",
+      "page": 154,
+      "bbox": [
+        0.0811,
+        0.1924,
+        0.9225,
+        0.2276
+      ],
+      "original_text": "vii. Stilts: If the building is constructed with stilt area of non-habitable height (less than 2.4 m), used for parking, such stilt area shall not be included in FAR but would be counted towards the height of the building.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "manual_entry",
+    "confidence": null
+  },
+  "notes": "Re-sourced from the plotted-residential section (page 154, clause vii). The earlier draft mistakenly cited the group-housing clause on page 156. Stilt must be of non-habitable height (<2.4 m) and used for parking; the stilt floor IS counted towards building height.",
+  "user_caveat": "The stilt must be of non-habitable height (under 2.4 m) and used for parking. The stilt floor still counts towards building height."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@indicodes/rules-tools",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "validate": "tsx src/cli.ts",
+    "coverage": "tsx src/coverage.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "benchmark": "tsx src/benchmark-cli.ts",
+    "benchmark:worksheet": "tsx src/worksheet-cli.ts",
+    "benchmark:import": "tsx src/import-cli.ts"
+  },
+  "dependencies": {
+    "@indicodes/engine": "workspace:*",
+    "ajv": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.0"
+  }
+}

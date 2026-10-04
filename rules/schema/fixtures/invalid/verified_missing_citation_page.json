@@ -1,0 +1,15 @@
+{
+  "rule_id": "test_doc.res_plotted.far.bad_no_page",
+  "title": "INVALID — verified status but first citation has null page (must fail spec §3.4)",
+  "parameter": "far",
+  "applicability": { "land_use": "residential_plotted", "authority": "DDA", "conditions": [] },
+  "output": { "type": "scalar", "value": 123, "unit": "far_x100" },
+  "effective_from": "2020-01-01",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    { "doc_id": "test_doc", "clause": "§0.0", "page": null, "bbox": null, "original_text": null, "original_lang": "en", "translated_text": null }
+  ],
+  "verification": { "status": "verified", "verified_by": "x_y", "verified_on": "2020-01-02", "method": "manual_entry", "confidence": null },
+  "notes": ""
+}

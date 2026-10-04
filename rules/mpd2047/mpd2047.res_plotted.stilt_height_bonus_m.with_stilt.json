@@ -1,0 +1,48 @@
+{
+  "rule_id": "mpd2047.res_plotted.stilt_height_bonus_m.with_stilt",
+  "title": "Additional 2.5m height (15m to 17.5m) when stilt parking is provided, clause (iv)",
+  "parameter": "stilt_height_bonus_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "stilt_parking",
+        "op": "eq",
+        "value": true
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 2.5,
+    "unit": "m"
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": "(iv)",
+      "page": 177,
+      "bbox": [
+        0.1101,
+        0.4821,
+        0.8837,
+        0.5357
+      ],
+      "original_text": "Maximum height of the building shall be 15m ... In plots with stilt parking height of the building shall be upto 17.5m (i.e. stilt + 4 habitable floors).",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.85
+  },
+  "notes": "Bonus derived as difference between 17.5m (with stilt) and 15m (without stilt); page states absolute heights, not the bonus explicitly. Verify."
+}

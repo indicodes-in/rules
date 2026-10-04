@@ -1,0 +1,51 @@
+{
+  "rule_id": "mpd2047.res_plotted.ground_coverage_pct.1000_1500",
+  "title": "Max ground coverage 50% for plots above 1000 up to 1500 sqm (Plotted Housing table, row 6)",
+  "parameter": "ground_coverage_pct",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          1000,
+          1500
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 50,
+    "unit": "pct"
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": null,
+      "page": 177,
+      "bbox": [
+        0.2576,
+        0.2076,
+        0.8408,
+        0.2224
+      ],
+      "original_text": "6. Above 1000 up to 1500 50 200 7",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Prose 'Above 1000 up to 1500': 1000 belongs to LOWER band, 1500 belongs to THIS band."
+}

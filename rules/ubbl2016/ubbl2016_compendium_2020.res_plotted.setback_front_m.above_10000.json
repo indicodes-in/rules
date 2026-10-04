@@ -1,0 +1,48 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.setback_front_m.above_10000",
+  "title": "Front setback 15 m for plots above 10000 sqm — clause x setback table row 6",
+  "parameter": "setback_front_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "gt",
+        "value": 10000
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 15,
+    "unit": "m"
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "x Table",
+      "page": 154,
+      "bbox": [
+        0.0877,
+        0.5556,
+        0.7931,
+        0.568
+      ],
+      "original_text": "6  Above 10000  15  9  9  9",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "'Above 10000' — 10000 belongs to the preceding band; encoded as gt 10000."
+}

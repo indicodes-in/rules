@@ -1,0 +1,52 @@
+{
+  "rule_id": "mpd2021_mod_2022.res_plotted.ground_coverage_pct.100_250",
+  "title": "Max ground coverage 75% for plots above 100 to 250 sqm (residential plotted table, row 3)",
+  "parameter": "ground_coverage_pct",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          100,
+          250
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 75,
+    "unit": "pct"
+  },
+  "effective_from": "2007-02-07",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "clause": "Development control norms for residential plots (table)",
+      "page": 63,
+      "bbox": [
+        0.2812,
+        0.1762,
+        0.8411,
+        0.1904
+      ],
+      "original_text": "3 Above 100 to 250 75** 300** 4",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Value carries '75**'; Note 4: **100% ground coverage and 350 FAR eligible for regularization of construction existing as on 22.09.06 for plot size 100 to 175 sqm. Prose 'Above 100 to 250': 100 belongs to lower band, 250 to this band — verifier to confirm [100,250).",
+  "user_caveat": "Printed as 75** in the source. Note 4: 100% ground coverage and 350 FAR are eligible for regularization of construction existing as on 22.09.2006, for plot sizes 100–175 m²."
+}

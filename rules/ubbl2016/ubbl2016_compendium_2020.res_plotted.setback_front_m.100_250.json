@@ -1,0 +1,51 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.setback_front_m.100_250",
+  "title": "Front setback 3 m for plots above 100 up to 250 sqm — clause x setback table row 2",
+  "parameter": "setback_front_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          100,
+          250
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 3,
+    "unit": "m"
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "x Table",
+      "page": 154,
+      "bbox": [
+        0.0877,
+        0.4801,
+        0.7931,
+        0.4925
+      ],
+      "original_text": "2  Above 100 and up to 250  3  0  0  0",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "'Above 100 and up to 250' — per prose 100 is EXCLUDED (belongs to lower band) and 250 is INCLUDED (belongs to this band). Encoded [100,250); verifier to adjust boundary ownership of 250."
+}

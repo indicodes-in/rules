@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://indicodes.local/schemas/definition.schema.json",
+  "title": "Indicodes definition file (normative, spec.md §3.7)",
+  "description": "One JSON file per defined term under rules/definitions/<definition_id>.json. A rule states a value; a definition states what the words in that value mean. They are separate nodes because the same term is defined more than once across the instruments governing one plot — 'height' is measured differently by the bye-laws, by fire norms and by airport height clearance — and a corpus that cannot represent that disagreement cannot surface it. Cross-file invariants (definition_id ↔ filename, doc_id registered, supersession, term coverage of consuming rules, conflicting in-force definitions) are enforced by `pnpm rules:validate`, not by this schema. Definition text enters the repo only through the extraction + human-verification pipeline (CLAUDE.md principle 3).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "definition_id",
+    "term",
+    "applies_to",
+    "text",
+    "effective_from",
+    "effective_to",
+    "supersedes",
+    "citations",
+    "verification",
+    "notes"
+  ],
+  "properties": {
+    "definition_id": {
+      "description": "Dot-namespaced stable identifier: <doc>.<term_slug>. Doc-prefixed deliberately — two documents defining the same term must produce two files, or the conflict they represent has nowhere to live. Drafts whose source document is not yet confirmed use the reserved prefix `draft.`. Must match the file name.",
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+){1,3}$"
+    },
+    "term": {
+      "description": "The defined term in normal prose, lowercase — e.g. \"built-up area\". Rules reference this string in consumes_terms, so it is the join key: two definitions of the same term share it and differ in definition_id.",
+      "type": "string",
+      "minLength": 2
+    },
+    "applies_to": {
+      "description": "Scope this definition governs. A term defined for one use or authority says nothing about another.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["land_use", "authority"],
+      "properties": {
+        "land_use": { "enum": ["residential_plotted"] },
+        "authority": { "enum": ["DDA"] }
+      }
+    },
+    "text": {
+      "description": "The definition as the source states it. Original language is ground truth (CLAUDE.md principle 6): a translation is stored beside the original and never in place of it.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["original", "original_lang", "translated"],
+      "properties": {
+        "original": { "type": ["string", "null"] },
+        "original_lang": { "enum": ["hi", "en", null] },
+        "translated": { "type": ["string", "null"] }
+      }
+    },
+    "effective_from": { "$ref": "#/$defs/isoDateOrNull" },
+    "effective_to": { "$ref": "#/$defs/isoDateOrNull" },
+    "supersedes": {
+      "description": "definition_id this version replaces. Never edit a verified definition — supersede it, exactly as with rules (spec §3.5).",
+      "oneOf": [
+        { "type": "string", "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+){1,3}$" },
+        { "type": "null" }
+      ]
+    },
+    "citations": {
+      "description": "Empty is allowed only while the definition is a draft — a draft exists precisely to record that we know the term matters and have not yet found where it is defined. A verified definition must cite.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/citation" }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "verified_by", "verified_on", "method", "confidence"],
+      "properties": {
+        "status": { "enum": ["draft", "verified", "rejected"] },
+        "verified_by": {
+          "oneOf": [{ "type": "string", "minLength": 2 }, { "type": "null" }]
+        },
+        "verified_on": { "$ref": "#/$defs/isoDateOrNull" },
+        "method": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "confidence": {
+          "oneOf": [{ "type": "number", "minimum": 0, "maximum": 1 }, { "type": "null" }]
+        }
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "description": "A verified definition must be complete: real text in its original language, a date it came into force, a named verifier, and a first citation carrying clause and page.",
+      "if": {
+        "properties": {
+          "verification": {
+            "properties": { "status": { "const": "verified" } },
+            "required": ["status"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "effective_from": { "type": "string" },
+          "text": {
+            "properties": {
+              "original": { "type": "string", "minLength": 2 },
+              "original_lang": { "enum": ["hi", "en"] }
+            }
+          },
+          "verification": {
+            "properties": {
+              "verified_by": { "type": "string" },
+              "verified_on": { "type": "string" }
+            }
+          },
+          "citations": {
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "properties": {
+                  "clause": { "type": "string", "minLength": 1 },
+                  "page": { "type": "integer" }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "isoDateOrNull": {
+      "oneOf": [{ "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }, { "type": "null" }]
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "doc_id",
+        "clause",
+        "page",
+        "bbox",
+        "original_text",
+        "original_lang",
+        "translated_text"
+      ],
+      "properties": {
+        "doc_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "clause": { "type": ["string", "null"] },
+        "page": {
+          "oneOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }]
+        },
+        "bbox": {
+          "oneOf": [
+            {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": { "type": "number", "minimum": 0, "maximum": 1 }
+            },
+            { "type": "null" }
+          ]
+        },
+        "original_text": { "type": ["string", "null"] },
+        "original_lang": { "enum": ["hi", "en", null] },
+        "translated_text": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

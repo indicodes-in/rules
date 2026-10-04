@@ -1,0 +1,49 @@
+name: Source watch
+
+# Weekly check of the pages where DDA and MCD announce changes (pipeline/watch.py).
+# New notices that may touch the rules open — or add to — one "source-watch"
+# issue. It never changes a rule: someone reads the notice, drafts any change,
+# has it verified, then runs `python -m pipeline.watch --update` and commits
+# sources/watch/seen.json.
+
+on:
+  schedule:
+    - cron: "30 3 * * 1" # Mondays, 09:00 IST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - id: watch
+        run: |
+          set +e
+          python -m pipeline.watch --markdown watch.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Raise new notices
+        if: steps.watch.outputs.code == '2'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create source-watch --color BFD4F2 --description "New DDA/MCD notices to review" --force
+          open=$(gh issue list --label source-watch --state open --json number --jq '.[0].number')
+          if [ -n "$open" ]; then
+            gh issue comment "$open" --body-file watch.md
+          else
+            gh issue create --title "Notices to review ($(date -u +%F))" --label source-watch --body-file watch.md
+          fi
+      # 3 = every source failed (e.g. the runner's network is blocked).
+      # Fail loudly: an outage must never read as "nothing new".
+      - name: Fail when the watch could not see
+        if: steps.watch.outputs.code != '0' && steps.watch.outputs.code != '2'
+        run: |
+          cat watch.md
+          exit 1

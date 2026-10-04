@@ -1,0 +1,25 @@
+{
+  "definition_id": "draft.built_up_area",
+  "term": "built-up area",
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": null,
+    "original_lang": null,
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "manual_entry",
+    "confidence": null
+  },
+  "notes": "TODO(verify): locate the governing definition of \"built-up area\" in the source documents, quote it verbatim with clause and page, and supersede this draft with a doc-prefixed definition_id. FAR produces built-up area, and the parking rate is expressed per 100 m² of it. The ECS rounding question (docs/tasks.md) is unanswerable until this term is pinned: 7.17 vs 8 ECS turns partly on what counts toward the area being divided. No text is recorded here on purpose — a definition written from general knowledge is exactly what CLAUDE.md principle 3 forbids."
+}

@@ -1,0 +1,23 @@
+name: New notice or document
+description: An amendment, circular, notification or judgment the rules may need to reflect.
+labels: ["source-watch"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Document
+      description: Title, number and date (e.g. "S.O. 1053(E), 2020").
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Where it is published.
+    validations:
+      required: true
+  - type: textarea
+    id: affects
+    attributes:
+      label: What it changes
+      description: Which rules or clauses it touches, if you know.

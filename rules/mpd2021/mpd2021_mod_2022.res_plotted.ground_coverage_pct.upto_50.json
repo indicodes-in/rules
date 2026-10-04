@@ -1,0 +1,49 @@
+{
+  "rule_id": "mpd2021_mod_2022.res_plotted.ground_coverage_pct.upto_50",
+  "title": "Max ground coverage 90% for plots upto 50 sqm (residential plotted table, row 1)",
+  "parameter": "ground_coverage_pct",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "lte",
+        "value": 50
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 90,
+    "unit": "pct"
+  },
+  "effective_from": "2016-08-11",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "clause": "Development control norms for residential plots (table)",
+      "page": 63,
+      "bbox": [
+        0.2812,
+        0.1388,
+        0.845,
+        0.1531
+      ],
+      "original_text": "1[1 Upto 50 90* 350 3]",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Value carries asterisk '90*'; Note 2: *100% ground coverage eligible for regularization of construction existing as on 22.09.06 on payment of charges. Source band 'Upto 50' includes 50; lt encoding pushes 50 to next band — verifier to confirm boundary. Row marked footnote 1: 'Added vide S.O. 2690(E) dated 11-08-2016'.",
+  "user_caveat": "Printed as 90* in the source. Note 2: 100% ground coverage is eligible for regularization of construction existing as on 22.09.2006, on payment of charges."
+}

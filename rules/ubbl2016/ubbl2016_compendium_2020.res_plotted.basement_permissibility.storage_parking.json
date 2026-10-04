@@ -1,0 +1,42 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.basement_permissibility.storage_parking",
+  "title": "Basement not counted towards FAR if used for permissible purposes (household storage and parking) — clause vi",
+  "parameter": "basement_permissibility",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": []
+  },
+  "output": {
+    "type": "boolean",
+    "value": true
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "vi",
+      "page": 154,
+      "bbox": [
+        0.0811,
+        0.0958,
+        0.9226,
+        0.1823
+      ],
+      "original_text": "Basement: Basement shall not be counted towards FAR if used for purposes permissible under building bye laws namely household storage and parking. Basement area shall not extend beyond the coverage on the ground floor as per permissible and sanctioned built up area, but may extend to the area below the internal courtyard and shaft. Basement if used in terms of chapter 15.0 Mixed Use Regulations (MPD- 2021) shall count towards FAR and shall be liable to payment of appropriate charges, if it exceeds the permissible FAR.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.8
+  },
+  "notes": "Basement permitted and excluded from FAR ONLY when used for permissible purposes (household storage and parking) and not extending beyond ground-floor coverage. If used under Mixed Use Regulations (Ch 15.0 MPD-2021), it COUNTS towards FAR. Verifier: this rule encodes the FAR-exemption/permissibility aspect; the mixed-use exception may warrant a separate flag.",
+  "user_caveat": "Excluded from FAR only when used for permissible purposes (household storage and parking) and not extending beyond the ground-floor coverage. Under the Mixed Use Regulations (MPD-2021 Ch 15.0) a basement counts towards FAR."
+}

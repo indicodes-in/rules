@@ -1,0 +1,35 @@
+{
+  "rule_id": "test_doc.res_plotted.stilt_far_exemption.base",
+  "title": "SYNTHETIC — stilt FAR exemption (draft boolean fixture)",
+  "parameter": "stilt_far_exemption",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      { "fact": "stilt_parking", "op": "eq", "value": true }
+    ]
+  },
+  "output": { "type": "boolean", "value": null },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "test_doc",
+      "clause": null,
+      "page": null,
+      "bbox": null,
+      "original_text": null,
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.8
+  },
+  "notes": "Synthetic fixture. TODO(verify)"
+}

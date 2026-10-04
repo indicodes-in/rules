@@ -1,0 +1,3 @@
+# Checks only — no LLM, no network except the notice watcher.
+pymupdf>=1.23
+pytest>=8

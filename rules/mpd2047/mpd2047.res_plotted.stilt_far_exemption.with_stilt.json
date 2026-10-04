@@ -1,0 +1,47 @@
+{
+  "rule_id": "mpd2047.res_plotted.stilt_far_exemption.with_stilt",
+  "title": "Stilt area (per UBBL) used for parking excluded from FAR but counted towards height, clause (v)",
+  "parameter": "stilt_far_exemption",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "stilt_parking",
+        "op": "eq",
+        "value": true
+      }
+    ]
+  },
+  "output": {
+    "type": "boolean",
+    "value": true
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": "(v)",
+      "page": 177,
+      "bbox": [
+        0.1157,
+        0.5483,
+        0.8838,
+        0.5822
+      ],
+      "original_text": "If the building is constructed with stilt area as per UBBL and used for parking, such stilts shall not be included in FAR but will be counted towards the height of the building.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Exemption conditional on stilt being constructed as per UBBL and used for parking; stilt still counts towards height."
+}

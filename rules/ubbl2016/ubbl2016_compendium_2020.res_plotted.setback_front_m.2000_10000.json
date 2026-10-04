@@ -1,0 +1,51 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.setback_front_m.2000_10000",
+  "title": "Front setback 9 m for plots above 2000 up to 10000 sqm — clause x setback table row 5",
+  "parameter": "setback_front_m",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          2000,
+          10000
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 9,
+    "unit": "m"
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "x Table",
+      "page": 154,
+      "bbox": [
+        0.0877,
+        0.5367,
+        0.7931,
+        0.5491
+      ],
+      "original_text": "5  Above 2000 and up to 10000  9  6  6  6",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "'Above 2000 and up to 10000' — 2000 excluded, 10000 included per prose. Encoded [2000,10000)."
+}

@@ -1,0 +1,51 @@
+{
+  "$comment": [
+    "What this corpus was read against, and what has been published since.",
+    "",
+    "Every rule here carries effective_from, and the resolver evaluates against",
+    "a date — but all 54 carry effective_to: null, and none carries a",
+    "supersedes pointer. So the engine treats every rule as in force forever,",
+    "and an evaluation dated today is served with a citation and no caveat.",
+    "",
+    "That is fine while nothing has superseded them and dangerous the moment",
+    "something has. MPD-2047 was notified on 2026-08-20 and this corpus does",
+    "not contain a single rule from it. A tool whose whole claim is that its",
+    "numbers are traceable must also say how current the thing it traced to is.",
+    "",
+    "DELIBERATELY NOT A SUPERSESSION CLAIM. The English gazette was searched",
+    "in full and no operative transition provision was located — no 'in",
+    "supersession of', no commencement clause, no date on which MPD-2021",
+    "ceases. Asserting that MPD-2021 stopped governing on 2026-08-20 would be",
+    "precisely the confidently-wrong answer this product exists to avoid. What",
+    "is stated below is what can be shown from the documents themselves: what",
+    "we read, and what we have not.",
+    "",
+    "Resolving this needs a person to read the transition provisions and the",
+    "DDA FAQ, then either date-bound these rules or record why they still",
+    "stand. Until then the honest position is that we do not know."
+  ],
+  "read_against": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "label": "MPD-2021",
+      "note": "Compilation incorporating modifications up to 31 August 2022."
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "label": "UBBL 2016",
+      "note": "Unified Building Bye-Laws compendium, 2020."
+    }
+  ],
+  "unread_successors": [
+    {
+      "doc_id": "mpd2047",
+      "label": "MPD-2047",
+      "instrument": "S.O. 4597(E)",
+      "notified": "2026-08-20",
+      "registered": true,
+      "rules_extracted": 0,
+      "source": "Stated on page 1 of the gazette: 'approved by the Central Government under Section 11A(2) of DD Act 1957 and notified vide Gazette Notification S.O. No. 4597(E) dated 20.08.2026.'",
+      "note": "Registered in sources.json with its hash; no rule has been extracted from it. Its effect on any value below has not been established."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "rule_id": "mpd2047.res_plotted.far.250_750",
+  "title": "Max FAR 225 for plots above 250 up to 750 sqm (Plotted Housing table, row 4)",
+  "parameter": "far",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          250,
+          750
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 225,
+    "unit": "far_x100"
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": null,
+      "page": 177,
+      "bbox": [
+        0.2576,
+        0.1669,
+        0.8408,
+        0.1817
+      ],
+      "original_text": "4. Above 250 up to 750 75 225 5",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Prose band 'Above 250 up to 750': 250 belongs to LOWER band, 750 belongs to THIS band. Verifier to confirm boundary."
+}

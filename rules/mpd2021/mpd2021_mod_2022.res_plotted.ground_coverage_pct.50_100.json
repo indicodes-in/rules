@@ -1,0 +1,52 @@
+{
+  "rule_id": "mpd2021_mod_2022.res_plotted.ground_coverage_pct.50_100",
+  "title": "Max ground coverage 90% for plots above 50 to 100 sqm (residential plotted table, row 2)",
+  "parameter": "ground_coverage_pct",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          50,
+          100
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 90,
+    "unit": "pct"
+  },
+  "effective_from": "2007-02-07",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "clause": "Development control norms for residential plots (table)",
+      "page": 63,
+      "bbox": [
+        0.2812,
+        0.1575,
+        0.8411,
+        0.1718
+      ],
+      "original_text": "2 Above 50 to 100 90* 350 4",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "Value carries asterisk '90*'; Note 2: *100% ground coverage eligible for regularization of construction existing as on 22.09.06. Prose 'Above 50 to 100': 50 belongs to lower band (upto 50), 100 belongs to this band — verifier to confirm half-open [50,100) handling.",
+  "user_caveat": "Printed as 90* in the source. Note 2: 100% ground coverage is eligible for regularization of construction existing as on 22.09.2006."
+}

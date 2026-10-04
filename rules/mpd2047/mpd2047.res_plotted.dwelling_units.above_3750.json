@@ -1,0 +1,48 @@
+{
+  "rule_id": "mpd2047.res_plotted.dwelling_units.above_3750",
+  "title": "Max 10 dwelling units for plots above 3750 sqm (Plotted Housing table, row 10)",
+  "parameter": "dwelling_units",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "gt",
+        "value": 3750
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 10,
+    "unit": "count"
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": null,
+      "page": 177,
+      "bbox": [
+        0.2526,
+        0.2886,
+        0.8458,
+        0.3034
+      ],
+      "original_text": "10. Above 3750 50 200 10",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Prose 'Above 3750': 3750 belongs to LOWER band (row 9); op gt used."
+}

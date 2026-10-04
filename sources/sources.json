@@ -1,0 +1,91 @@
+{
+  "documents": [
+    {
+      "doc_id": "mpd2021",
+      "title": "Master Plan for Delhi-2021 (incorporating modifications up to 30 June 2021) — DDA draft compilation for reference",
+      "authority": "DDA",
+      "languages": [
+        "en"
+      ],
+      "publication_date": null,
+      "file_hash": "4c98b006bf42e1639d3465a948dcb44e0babc88a4ac90dc7ef188944dd2312b8",
+      "storage_url": "sources/files/mpd2021.pdf",
+      "status": "registered"
+    },
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "title": "Master Plan for Delhi-2021 (incorporating modifications up to 31 August 2022) — DDA draft compilation for reference",
+      "authority": "DDA",
+      "languages": [
+        "en"
+      ],
+      "publication_date": null,
+      "file_hash": "d21998d313944cd9e6818b7157ab28573d78b37e6f732c78330a45977b117cf3",
+      "storage_url": "sources/files/mpd2021_mod_2022.pdf",
+      "status": "registered"
+    },
+    {
+      "doc_id": "ubbl2016",
+      "title": "Unified Building Bye-Laws for Delhi, 2016 — Gazette notification",
+      "authority": "DDA",
+      "languages": [
+        "hi",
+        "en"
+      ],
+      "publication_date": null,
+      "file_hash": "9fdc82012adca2b38a34d2d13b046bc584fc93e7e3f5553d50c29de33016f01f",
+      "storage_url": "sources/files/ubbl2016.pdf",
+      "status": "registered"
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "title": "Compendium of UBBL 2016 incorporating amendments up to 2020",
+      "authority": "DDA",
+      "languages": [
+        "hi",
+        "en"
+      ],
+      "publication_date": null,
+      "file_hash": "6d077c625d3e05783da3b2d2c68ba372796a2c8bb663f485c4e73eb2ea019c6d",
+      "storage_url": "sources/files/ubbl2016_compendium_2020.pdf",
+      "status": "registered"
+    },
+    {
+      "doc_id": "ubbl2016_amend_so1053e",
+      "title": "UBBL 2016 amendment S.O. 1053(E), 5 April 2017 — Gazette notification",
+      "authority": "DDA",
+      "languages": [
+        "hi",
+        "en"
+      ],
+      "publication_date": null,
+      "file_hash": "924f09fd85f3a22a874b451bde1353ddd2e9e4f382f167e81f49a60e72554e61",
+      "storage_url": "sources/files/ubbl2016_amend_so1053e.pdf",
+      "status": "registered"
+    },
+    {
+      "doc_id": "handbook_residential_2021",
+      "title": "DDA Handbook on Development Controls for Residential Development (Ease of Doing Business), 2021",
+      "authority": "DDA",
+      "languages": [
+        "en"
+      ],
+      "publication_date": null,
+      "file_hash": "97565460f74734e1272d0f79eb8f5c11c5d0395b1f3afbd29ac7d6f458972387",
+      "storage_url": "sources/files/handbook_residential_2021.pdf",
+      "status": "registered"
+    },
+    {
+      "doc_id": "mpd2047",
+      "title": "Master Plan for Delhi 2047 — gazette notification S.O. 4597(E), 20.08.2026 (English)",
+      "authority": "DDA",
+      "languages": [
+        "en"
+      ],
+      "publication_date": "2026-08-20",
+      "file_hash": "1fa153c0e9f4a08b2a91b6493e14236d31bbeeb28fa75d8c7f9a9df20e418848",
+      "storage_url": "sources/files/mpd2047.pdf",
+      "status": "registered"
+    }
+  ]
+}

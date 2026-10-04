@@ -1,0 +1,48 @@
+{
+  "rule_id": "ubbl2016_compendium_2020.res_plotted.parking_ecs_per_100sqm.upto_300",
+  "title": "Parking within the plot; 2 ECS for 250-300 sqm plots, no per-100sqm norm below 250 sqm (plotted residential, clause viii.a)",
+  "parameter": "parking_ecs_per_100sqm",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "lte",
+        "value": 300
+      }
+    ]
+  },
+  "output": {
+    "type": "flag",
+    "code": "parking_within_plot",
+    "message": "Parking to be provided within the plot. For plots of 250-300 sqm, 2 Equivalent Car Spaces (ECS) are required; for smaller plots no ECS-per-100 sqm norm is specified."
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "viii.a",
+      "page": 154,
+      "bbox": [
+        0.0811,
+        0.262,
+        0.6244,
+        0.2787
+      ],
+      "original_text": "a. 2 Equivalent Car Space (ECS) in plots of size 250-300sq.m.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "manual_entry",
+    "confidence": null
+  },
+  "notes": "Plotted-residential parking (page 154, clause viii). The per-100sqm ECS norm begins at 250 sqm; below that, parking is provided within the plot with no ECS-per-100sqm figure. Replaces the earlier draft that wrongly used the group-housing 2.0 ECS/100sqm norm from page 156."
+}

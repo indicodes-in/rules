@@ -1,0 +1,30 @@
+name: Report an error
+description: A value, citation or condition that doesn't match the source.
+labels: ["error-report"]
+body:
+  - type: input
+    id: rule
+    attributes:
+      label: Rule
+      description: The rule_id, or the parameter and plot (e.g. "FAR, 400 m² plot").
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong
+      description: What the data says, and what the source says instead.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Where the source says so
+      description: Document, page and clause — and a link if it is online.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: An amendment, circular or judgment that changes it, or how it is applied in practice.

@@ -1,0 +1,38 @@
+{
+  "$comment": [
+    "Single-page extracts of every page a verified rule or declared provision",
+    "cites, cut by `python -m pipeline.cite_pages` from the registered source",
+    "PDFs (sources/sources.json). Generated — do not edit by hand.",
+    "`pnpm rules:validate` fails when a cited page has no entry here."
+  ],
+  "extracts": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "page": 63,
+      "file": "sources/pages/mpd2021_mod_2022/p63.pdf",
+      "source_sha256": "d21998d313944cd9e6818b7157ab28573d78b37e6f732c78330a45977b117cf3",
+      "extract_sha256": "f7a97abf64252f0994dce28c9e23f371ce6100b18628a665d808f02c249d58b5"
+    },
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "page": 64,
+      "file": "sources/pages/mpd2021_mod_2022/p64.pdf",
+      "source_sha256": "d21998d313944cd9e6818b7157ab28573d78b37e6f732c78330a45977b117cf3",
+      "extract_sha256": "6822fa0ff1ddae3d1c0f44f210bbef056b7d181920b10f092c2e71e9e763e41a"
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "page": 153,
+      "file": "sources/pages/ubbl2016_compendium_2020/p153.pdf",
+      "source_sha256": "6d077c625d3e05783da3b2d2c68ba372796a2c8bb663f485c4e73eb2ea019c6d",
+      "extract_sha256": "dc5583ee2f3734bfbbee469392ab0db370eac99074d4fffb3815c71898e1f2af"
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "page": 154,
+      "file": "sources/pages/ubbl2016_compendium_2020/p154.pdf",
+      "source_sha256": "6d077c625d3e05783da3b2d2c68ba372796a2c8bb663f485c4e73eb2ea019c6d",
+      "extract_sha256": "0a04d0d0206b15fbaffffd5ec93be0f209176b370a68d545ccff0a2c69ed66a6"
+    }
+  ]
+}

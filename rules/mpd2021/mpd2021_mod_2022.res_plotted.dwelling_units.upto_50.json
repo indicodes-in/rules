@@ -1,0 +1,49 @@
+{
+  "rule_id": "mpd2021_mod_2022.res_plotted.dwelling_units.upto_50",
+  "title": "Max 3 dwelling units for plots upto 50 sqm (residential plotted table, row 1)",
+  "parameter": "dwelling_units",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "lte",
+        "value": 50
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 3,
+    "unit": "count"
+  },
+  "effective_from": "2016-08-11",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "clause": "Development control norms for residential plots (table)",
+      "page": 63,
+      "bbox": [
+        0.2812,
+        0.1388,
+        0.845,
+        0.1531
+      ],
+      "original_text": "1[1 Upto 50 90* 350 3]",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Source band 'Upto 50' includes 50; lt encoding pushes 50 to next band — verifier to confirm boundary. Row marked footnote 1: 'Added vide S.O. 2690(E) dated 11-08-2016'. Note 5: DUs shall not be less than MPD-2001 norms. Terms & Conditions (i): additional DUs subject to levy.",
+  "user_caveat": "Terms & conditions (i): additional dwelling units are subject to levy."
+}

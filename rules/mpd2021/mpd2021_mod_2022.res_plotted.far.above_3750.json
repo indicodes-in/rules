@@ -1,0 +1,48 @@
+{
+  "rule_id": "mpd2021_mod_2022.res_plotted.far.above_3750",
+  "title": "FAR 200 for plots above 3750 sqm (residential plotted table, row 10)",
+  "parameter": "far",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "gt",
+        "value": 3750
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 200,
+    "unit": "far_x100"
+  },
+  "effective_from": "2014-11-26",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "clause": "Development control norms for residential plots (table)",
+      "page": 63,
+      "bbox": [
+        0.2812,
+        0.3068,
+        0.8506,
+        0.321
+      ],
+      "original_text": "10 Above 3750 50 200 21]",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.9
+  },
+  "notes": "Within footnote 2 bracket which closes at this row ('21]'); rows 5–10 modified vide S.O. 2983(E) dated 26-11-2014. Prose 'Above 3750': 3750 belongs to lower band; gte 3750 includes 3750 here — verifier to confirm (consider gt 3750). Note 5: FAR not less than MPD-2001 norms."
+}

@@ -1,0 +1,51 @@
+{
+  "rule_id": "mpd2021_mod_2022.res_plotted.far.50_100",
+  "title": "FAR 350 for plots above 50 to 100 sqm (residential plotted table, row 2)",
+  "parameter": "far",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          50,
+          100
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 350,
+    "unit": "far_x100"
+  },
+  "effective_from": "2007-02-07",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2021_mod_2022",
+      "clause": "Development control norms for residential plots (table)",
+      "page": 63,
+      "bbox": [
+        0.2812,
+        0.1575,
+        0.8411,
+        0.1718
+      ],
+      "original_text": "2 Above 50 to 100 90* 350 4",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-06-17",
+    "method": "llm_extraction_v1",
+    "confidence": 0.92
+  },
+  "notes": "Prose 'Above 50 to 100': 50 belongs to lower band, 100 belongs to this band — verifier to confirm half-open [50,100). Note 5: FAR not less than MPD-2001 norms."
+}

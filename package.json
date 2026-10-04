@@ -1,0 +1,18 @@
+{
+  "name": "indicodes-rules",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.32.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "rules:validate": "pnpm --filter @indicodes/rules-tools validate",
+    "rules:coverage": "pnpm --filter @indicodes/rules-tools coverage",
+    "test:benchmark": "pnpm --filter @indicodes/rules-tools benchmark",
+    "benchmark:worksheet": "pnpm --filter @indicodes/rules-tools benchmark:worksheet",
+    "benchmark:import": "pnpm --filter @indicodes/rules-tools benchmark:import"
+  }
+}

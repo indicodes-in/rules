@@ -1,0 +1,25 @@
+{
+  "definition_id": "draft.plot_area",
+  "term": "plot area",
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": null,
+    "original_lang": null,
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "manual_entry",
+    "confidence": null
+  },
+  "notes": "TODO(verify): locate the governing definition of \"plot area\" in the source documents, quote it verbatim with clause and page, and supersede this draft with a doc-prefixed definition_id. Every band in the corpus is indexed on plot area, and FAR and ground coverage both multiply it. If this term means something different in MPD-2021 than in UBBL 2016, every number the tool produces inherits the discrepancy. No text is recorded here on purpose — a definition written from general knowledge is exactly what CLAUDE.md principle 3 forbids."
+}

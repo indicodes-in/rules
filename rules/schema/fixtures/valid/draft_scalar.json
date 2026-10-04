@@ -1,0 +1,35 @@
+{
+  "rule_id": "test_doc.res_plotted.far.band_a",
+  "title": "SYNTHETIC — FAR, plot band A (draft awaiting verification)",
+  "parameter": "far",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      { "fact": "plot_area_sqm", "op": "lte", "value": 100 }
+    ]
+  },
+  "output": { "type": "scalar", "value": null, "unit": "far_x100" },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "test_doc",
+      "clause": null,
+      "page": null,
+      "bbox": null,
+      "original_text": null,
+      "original_lang": "hi",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "llm_extraction_v1",
+    "confidence": 0.91
+  },
+  "notes": "Synthetic fixture. TODO(verify)"
+}

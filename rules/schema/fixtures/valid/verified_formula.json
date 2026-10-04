@@ -1,0 +1,37 @@
+{
+  "rule_id": "test_doc.res_plotted.parking_ecs_per_100sqm.base",
+  "title": "SYNTHETIC — parking ECS norm (verified formula fixture; values are fake)",
+  "parameter": "parking_ecs_per_100sqm",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": []
+  },
+  "output": {
+    "type": "formula",
+    "formula_id": "ecs_per_bua",
+    "params": { "ecs_per_100sqm": 123 }
+  },
+  "effective_from": "2020-01-01",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "test_doc",
+      "clause": "§0.0 (synthetic)",
+      "page": 1,
+      "bbox": [0.1, 0.2, 0.9, 0.4],
+      "original_text": "नकली पाठ (synthetic)",
+      "original_lang": "hi",
+      "translated_text": "Synthetic text"
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "test_verifier",
+    "verified_on": "2020-01-02",
+    "method": "manual_entry",
+    "confidence": null
+  },
+  "notes": "Synthetic fixture — never use as regulatory truth (CLAUDE.md principle 3)."
+}
