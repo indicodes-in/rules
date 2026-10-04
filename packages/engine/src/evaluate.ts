@@ -37,6 +37,15 @@ function factValue(value: unknown): string {
   return String(value);
 }
 
+/** Why a value doesn't apply to this plot, in one short line: "Applies only
+ * with stilt parking — not selected." Yes/no facts read as with/without. */
+function applicabilityMessage(fact: string, required: unknown, actual: unknown): string {
+  const label = factLabel(fact);
+  if (required === true) return `Applies only with ${label} — not selected.`;
+  if (required === false) return `Applies only without ${label} — you selected it.`;
+  return `Applies only when ${label} is ${factValue(required)} (yours: ${factValue(actual)}).`;
+}
+
 export const DISCLAIMER =
   "Decision support, not statutory sanction. Verify with the sanctioning authority.";
 
@@ -62,6 +71,9 @@ export interface Flag {
   message: string;
   parameter?: string;
   citations: Citation[];
+  /** The rules involved, for a conflict (spec §5.2 alert) — kept out of the
+   * message, which is for the reader. */
+  rule_ids?: string[];
 }
 
 /** Everything a plot gets from the rules. */
@@ -90,17 +102,17 @@ const FACT_UNITS: Record<string, string> = {
  * Names both neighbouring rows so the user can see the gap is in the
  * regulation, not in our corpus — and can check it against the source.
  */
-function bandGapMessage(parameter: string, gap: BandGap): string {
+function bandGapMessage(gap: BandGap): string {
   const unit = FACT_UNITS[gap.fact] ?? "";
   const amount = `${gap.value}${unit ? ` ${unit}` : ""}`;
   const quote = (text: string | null, fallback: string): string =>
     text ? `“${text}”` : fallback;
+  // The panel already names the value, so the message doesn't repeat it.
   return (
-    `No value for "${parameter}": the source table has no row for exactly ${amount}. ` +
-    `The row below reads ${quote(gap.below.source_text, `up to ${gap.below.bound}`)} and the ` +
-    `row above reads ${quote(gap.above.source_text, `from ${gap.above.bound}`)} — the ` +
-    `regulation itself does not say which governs this exact value, so we don't choose one. ` +
-    `Re-measure the plot precisely, or confirm the applicable row with the sanctioning authority.`
+    `No value. The table has no row for exactly ${amount}: one reads ` +
+    `${quote(gap.below.source_text, `up to ${gap.below.bound}`)}, the next ` +
+    `${quote(gap.above.source_text, `from ${gap.above.bound}`)}. The rule doesn't say which ` +
+    `applies, so we don't pick. Re-check the surveyed area, or ask the authority which row applies.`
   );
 }
 
@@ -200,9 +212,9 @@ function nearBandEdge(
   const distance = Math.abs(area - nearest.bound);
   const where =
     distance < 0.005
-      ? `sits exactly on the ${nearest.bound} m² band edge`
+      ? `sits exactly on the ${nearest.bound} m² size-category boundary`
       : `is ${distance.toFixed(2).replace(/\.?0+$/, "")} m² ${nearest.below ? "under" : "over"} ` +
-        `the ${nearest.bound} m² band edge`;
+        `the ${nearest.bound} m² size-category boundary`;
   return {
     code: "near_band_edge",
     message:
@@ -301,10 +313,10 @@ function floorMessage(parameter: Parameter, bite: FloorBite): string {
   const what = far ? "floor area" : "ground coverage";
   const ratio = far ? `FAR ${bite.value / 100}` : `${bite.value}% coverage`;
   return (
-    `Not shown. The band below gives its largest plot (${round2(bite.bound)} m²) ` +
-    `${round2(bite.minimum)} m² of ${what}; ${ratio} gives this plot ${round2(bite.own)} m². ` +
-    `The regulation says a plot may not get less than the largest plot in the band below. How ` +
-    `that minimum is applied isn't confirmed yet, so we show no figure rather than one that is too low.`
+    `No value shown. At ${ratio} this plot gets ${round2(bite.own)} m² of ${what}; the largest ` +
+    `plot in the category below (${round2(bite.bound)} m²) gets ${round2(bite.minimum)} m². The ` +
+    `rules say a plot may not get less. How that minimum applies isn't confirmed yet, so we show ` +
+    `no value rather than one that may be too low.`
   );
 }
 
@@ -345,7 +357,7 @@ export function evaluatePlot(
   for (const constraint of facts.special_area_flags) {
     scopeFlags.push({
       code: "special_area",
-      message: `These norms don't apply here — ${constraint}. Consult the specific regulations.`,
+      message: `Inside ${constraint}, which has its own rules. We don't give values here — check with the authority for this area.`,
       citations: [],
     });
   }
@@ -353,8 +365,8 @@ export function evaluatePlot(
     scopeFlags.push({
       code: "out_of_scope_land_use",
       message:
-        `These norms don't apply here — land use "${facts.land_use}" is outside ` +
-        `the plotted-residential MVP scope. Consult the specific regulations.`,
+        `Land use "${facts.land_use}" isn't plotted residential, so we don't give values. ` +
+        `Check the rules for that use with the authority.`,
       citations: [],
     });
   }
@@ -394,7 +406,7 @@ export function evaluatePlot(
           // The parameter is already named by `parameter`; repeating it, and
           // spelling the fact out as `stilt_parking being true, and you gave
           // false`, made a four-line paragraph out of one short sentence.
-          message: `Conditional on ${factLabel(na.fact)} being ${factValue(na.required)} — you set it to ${factValue(na.actual)}.`,
+          message: applicabilityMessage(na.fact, na.required, na.actual),
           citations: [],
         });
         continue;
@@ -406,7 +418,7 @@ export function evaluatePlot(
           ? {
               code: "source_band_gap",
               parameter,
-              message: bandGapMessage(parameter, gap),
+              message: bandGapMessage(gap),
               citations: [...gap.below.citations, ...gap.above.citations],
             }
           : declared
@@ -423,7 +435,7 @@ export function evaluatePlot(
             : {
                 code: "no_applicable_rule",
                 parameter,
-                message: `No applicable verified rule for "${parameter}" — not covered; report this plot.`,
+                message: "Not covered yet. If you need it, tell us with Report a discrepancy.",
                 citations: [],
               },
       );
@@ -433,9 +445,8 @@ export function evaluatePlot(
       flags.push({
         code: "rule_conflict",
         parameter,
-        message:
-          `Conflicting rules for "${parameter}" (${outcome.ruleIds.join(", ")}) — ` +
-          `corpus error, computation declined.`,
+        message: "Two of our rules disagree here, so we don't give a value. The error is ours — please report it.",
+        rule_ids: outcome.ruleIds,
         citations: [],
       });
       continue;
@@ -501,7 +512,7 @@ export function evaluatePlot(
             code: "no_rules_in_force",
             message:
               `No rules were in force on ${evaluationDate}. The regulations we hold — ` +
-              `MPD-2021 and UBBL 2016 — begin on ${earliest}. Pick a later date to evaluate.`,
+              `MPD-2021 and UBBL 2016 — begin on ${earliest}. Pick a later date.`,
             citations: [],
           },
         ],

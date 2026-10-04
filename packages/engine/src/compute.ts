@@ -119,7 +119,7 @@ export function computeDerived(
         code: "derived_inputs_unresolved",
         parameter: "parking_ecs_per_100sqm",
         message:
-          "Parking ECS needs the buildable area, which needs an applicable FAR rule — see the FAR flag.",
+          "No parking count without a floor area — see FAR.",
         citations: parking.rule.citations,
       });
     } else {

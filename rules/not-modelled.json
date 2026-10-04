@@ -19,7 +19,7 @@
   "parameters": [
     {
       "parameter": "stilt_height_bonus_m",
-      "reason": "Height is given as absolute values, not a base plus a bonus — max height is cited directly for both the stilt and no-stilt cases.",
+      "reason": "Not a separate value — see Max height, which is given for plots with and without stilt.",
       "see": ["ubbl2016_compendium_2020.res_plotted.max_height_m.no_stilt", "ubbl2016_compendium_2020.res_plotted.max_height_m.with_stilt"]
     }
   ]
