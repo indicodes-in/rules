@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.automatic_fire_detection_and_alarm_system",
+  "term": "automatic fire detection and alarm system",
+  "aliases": [
+    "automatic fire detection and alarm system",
+    "Automatic Fire Detection and Alarm Systems"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Automatic Fire Detection and Alarm System: Fire alarm system comprising of components for automatically detecting a fire, initiating an alarm of fire and other actions as appropriate. Note: The system shall also include manual fire alarm call points.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.12",
+      "page": 296,
+      "bbox": [
+        0.2164,
+        0.2696,
+        0.8777,
+        0.342
+      ],
+      "original_text": "Automatic Fire Detection and Alarm System: Fire alarm system comprising of components for automatically detecting a fire, initiating an alarm of fire and other actions as appropriate. Note: The system shall also include manual fire alarm call points.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.12",
+      "page": 8,
+      "bbox": [
+        0.1397,
+        0.2683,
+        0.9189,
+        0.331
+      ],
+      "original_text": "Automatic Fire Detection and Alarm System: Fire alarm system comprising of components for automatically detecting a fire, initiating an alarm of fire and other actions as appropriate. Note: The system shall also include manual fire alarm call points.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.12 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.8."
+}

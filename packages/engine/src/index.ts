@@ -25,7 +25,7 @@ export {
   type ParameterResult,
   type PlotEvaluation,
 } from "./evaluate.js";
-export type { CategoryFloor, CorpusCurrency, NotModelled, UnreadSuccessor } from "./declarations.js";
+export type { CategoryFloor, CorpusCurrency, NotModelled, PlotMinimum, UnreadSuccessor } from "./declarations.js";
 export {
   EngineError,
   materializeEffectiveTo,
@@ -36,6 +36,7 @@ export {
 } from "./resolver.js";
 export {
   CONDITION_FACTS,
+  ADVISORY_PARAMETERS,
   PARAMETERS,
   type Citation,
   type ConditionFact,

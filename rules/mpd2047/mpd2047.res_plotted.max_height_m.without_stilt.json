@@ -18,9 +18,9 @@
     "value": 15,
     "unit": "m"
   },
-  "effective_from": null,
+  "effective_from": "2026-08-20",
   "effective_to": null,
-  "supersedes": null,
+  "supersedes": "ubbl2016_compendium_2020.res_plotted.max_height_m.no_stilt",
   "citations": [
     {
       "doc_id": "mpd2047",
@@ -38,11 +38,12 @@
     }
   ],
   "verification": {
-    "status": "draft",
-    "verified_by": null,
-    "verified_on": null,
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-15",
     "method": "llm_extraction_v1",
     "confidence": 0.92
   },
-  "notes": "15m corresponds to Ground+3 habitable floors, without stilt parking."
+  "notes": "15m corresponds to Ground+3 habitable floors, without stilt parking.",
+  "user_caveat": "MPD-2047 states this as Ground + 3 habitable floors (Other controls (iv), p.177)."
 }

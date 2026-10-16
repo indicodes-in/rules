@@ -26,5 +26,5 @@ of its text.
 
 ## No warranty
 
-The data is provided as is. It is decision support, not statutory sanction.
-Verify with the sanctioning authority.
+The data is provided as is. It is early design guidance, not building
+approval. Verify with the sanctioning authority.

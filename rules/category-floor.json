@@ -35,6 +35,21 @@
         "original_lang": "en",
         "translated_text": null
       }
+    },
+    {
+      "id": "mpd2047.res_plotted.category_floor",
+      "parameters": ["far", "ground_coverage_pct"],
+      "fact": "plot_area_sqm",
+      "applies_to_docs": ["mpd2047"],
+      "citation": {
+        "doc_id": "mpd2047",
+        "clause": "Other controls for Plotted Housing (iii)",
+        "page": 177,
+        "bbox": [0.1091, 0.4319, 0.8785, 0.4706],
+        "original_text": "The total ground coverage and the floor area permissible in any plot in a category, shall not be less than that available to the largest plot in the next lower category.",
+        "original_lang": "en",
+        "translated_text": null
+      }
     }
   ]
 }

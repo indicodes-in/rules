@@ -1,0 +1,47 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.plot",
+  "term": "plot",
+  "aliases": [
+    "plot",
+    "Plots",
+    "Site",
+    "Sites"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Plot / Site: A parcel or piece of land enclosed by definite boundaries and approved by an Sanctioning Authorityas a building site, as part of approved layout plan or special areas/ unauthorized regularized colony/ village abadis/ lal dora/ extended lal dora/ resettlement colonies and slum & JJ cluster/ Rehabilitation Colonies.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": "ubbl2016.plot",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.89",
+      "page": 14,
+      "bbox": [
+        0.1442,
+        0.1186,
+        0.919,
+        0.1746
+      ],
+      "original_text": "Plot / Site: A parcel or piece of land enclosed by definite boundaries and approved by an Sanctioning Authorityas a building site, as part of approved layout plan or special areas/ unauthorized regularized colony/ village abadis/ lal dora/ extended lal dora/ resettlement colonies and slum & JJ cluster/ Rehabilitation Colonies.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.89 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): reworded after 2016 by a notification not yet registered — one of the modifications listed on ubbl2016_compendium_2020 p.6. effective_from stays null, so this version cannot be verified until that notification is found and its date recorded. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.private_establishment",
+  "term": "private establishment",
+  "aliases": [
+    "private establishment",
+    "Private establishments"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Private establishment: means a company, firm, cooperative or other society, associations, trust, agency, institution, organization, union, factory or such other establishment as the appropriate Government may, by notification, specify.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.134",
+      "page": 16,
+      "bbox": [
+        0.1442,
+        0.3716,
+        0.9189,
+        0.4085
+      ],
+      "original_text": "Private establishment: means a company, firm, cooperative or other society, associations, trust, agency, institution, organization, union, factory or such other establishment as the appropriate Government may, by notification, specify.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.134 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): clause added after 2016 (not in ubbl2016); find the notification among those listed on ubbl2016_compendium_2020 p.6 and record its date. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

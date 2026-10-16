@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.external_wall",
+  "term": "external wall",
+  "aliases": [
+    "external wall",
+    "External Walls"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "External Wall: An outer wall of a building not being a party wall even though adjoining a wall of another building and also means a wall abutting on an interior open space of any building.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.39",
+      "page": 298,
+      "bbox": [
+        0.2164,
+        0.478,
+        0.8777,
+        0.5212
+      ],
+      "original_text": "External Wall: An outer wall of a building not being a party wall even though adjoining a wall of another building and also means a wall abutting on an interior open space of any building.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.39",
+      "page": 10,
+      "bbox": [
+        0.1442,
+        0.1663,
+        0.9188,
+        0.2032
+      ],
+      "original_text": "External Wall: An outer wall of a building not being a party wall even though adjoining a wall of another building and also means a wall abutting on an interior open space of any building.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.39 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.10."
+}

@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016.ground_coverage",
+  "term": "ground coverage",
+  "aliases": [
+    "ground coverage",
+    "Ground Coverages"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Ground Coverage: The portion of the building within the outer surface of the structural wall/column/slab measured at ground level excluding the projection/balcony/canopy/porch/void/shaft/ permitted free from FAR and cladding/curtain wall upto 150mm shall be considered as ground coverage.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": "draft.ground_coverage",
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.57",
+      "page": 299,
+      "bbox": [
+        0.2164,
+        0.8081,
+        0.8777,
+        0.8662
+      ],
+      "original_text": "Ground Coverage: The portion of the building within the outer surface of the structural wall/column/slab measured at ground level excluding the projection/balcony/canopy/porch/void/shaft/ permitted free from FAR and cladding/curtain wall upto 150mm shall be considered as ground coverage.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.57 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Supersedes draft.ground_coverage, the placeholder opened before this clause was found."
+}

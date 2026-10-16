@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016_amend_so1053e.sanctioning_authority",
+  "term": "sanctioning authority",
+  "aliases": [
+    "sanctioning authority",
+    "Sanctioning Authorities"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Sanctioning Authority: The Delhi Development Authority, New Delhi Municipal Council, South Delhi Municipal Corporation, North Delhi Municipal Corporation, East Delhi Municipal Corporation, Delhi Cantonment Board hereinafter called the 'Sanctioning Authority'.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2017-04-05",
+  "effective_to": null,
+  "supersedes": "ubbl2016.authority_having_jurisdiction",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_amend_so1053e",
+      "clause": "1.4.10",
+      "page": 47,
+      "bbox": [
+        0.4727,
+        0.3025,
+        0.9072,
+        0.3855
+      ],
+      "original_text": "Sanctioning Authority: The Delhi Development Authority, New Delhi Municipal Council, South Delhi Municipal Corporation, North Delhi Municipal Corporation, East Delhi Municipal Corporation, Delhi Cantonment Board hereinafter called the 'Sanctioning Authority'.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.10",
+      "page": 8,
+      "bbox": [
+        0.1397,
+        0.1578,
+        0.9189,
+        0.2135
+      ],
+      "original_text": "Sanctioning Authority: The Delhi Development Authority, New Delhi Municipal Council, South Delhi Municipal Corporation, North Delhi Municipal Corporation, East Delhi Municipal Corporation, Delhi Cantonment Board hereinafter called the ‘Sanctioning Authority’.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_amend_so1053e, clause 1.4.10 by pipeline.definitions — no model involved. Confirm the text and box against the page. Modified clause from the notification's right-hand column, p.47. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). TODO(verify): ubbl2016_compendium_2020 p.8 differs from the notification's wording."
+}

@@ -124,3 +124,27 @@ describe("findInapplicable — 'does not apply' vs 'we are missing it'", () => {
     expect(findInapplicable("far", makeFacts(), rules, DATE, { allowDraft: true })).not.toBeNull();
   });
 });
+
+/* Audit 2026-10-10 §06: an explanation must come from rules that could
+   have governed this plot — the same authority and use the resolver uses. */
+describe("findInapplicable stays inside the plot's authority and use", () => {
+  const stilt = makeRule({
+    rule_id: "test_doc.res_plotted.stilt_height_bonus_m.with_stilt",
+    parameter: "stilt_height_bonus_m",
+    conditions: [{ fact: "stilt_parking", op: "eq", value: true }],
+  });
+  it("explains nothing for another authority", () => {
+    expect(
+      findInapplicable("stilt_height_bonus_m", makeFacts({ authority: "OTHER_AUTHORITY" }), [stilt], "2026-01-01"),
+    ).toBeNull();
+  });
+  it("explains nothing for another land use", () => {
+    expect(
+      findInapplicable("stilt_height_bonus_m", makeFacts({ land_use: "commercial" }), [stilt], "2026-01-01"),
+    ).toBeNull();
+  });
+  it("still explains for the plot's own authority and use", () => {
+    expect(findInapplicable("stilt_height_bonus_m", makeFacts(), [stilt], "2026-01-01")).not.toBeNull();
+  });
+});
+

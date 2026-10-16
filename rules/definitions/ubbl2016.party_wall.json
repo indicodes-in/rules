@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016.party_wall",
+  "term": "party wall",
+  "aliases": [
+    "party wall",
+    "Party Walls"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Party Wall: It includes a. A wall forming part of a building, and being used or constructed to be used in any part of the height or length of such wall for separation or adorning buildings belonging to different owners or occupied or constructed or adapted to be occupied by different persons; or b. A wall forming part of a building and standing in any part of the length of such wall, to a greater extent than the projection of the footing on one side on grounds of different owners.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.82",
+      "page": 302,
+      "bbox": [
+        0.2164,
+        0.7107,
+        0.8797,
+        0.8528
+      ],
+      "original_text": "Party Wall: It includes a. A wall forming part of a building, and being used or constructed to be used in any part of the height or length of such wall for separation or adorning buildings belonging to different owners or occupied or constructed or adapted to be occupied by different persons; or b. A wall forming part of a building and standing in any part of the length of such wall, to a greater extent than the projection of the footing on one side on grounds of different owners.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.82 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

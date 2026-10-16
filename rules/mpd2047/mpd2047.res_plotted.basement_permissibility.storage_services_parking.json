@@ -1,0 +1,42 @@
+{
+  "rule_id": "mpd2047.res_plotted.basement_permissibility.storage_services_parking",
+  "title": "Basement permitted; free of FAR for incidental storage, services, utilities and parking (MPD-2047 13.1.3)",
+  "parameter": "basement_permissibility",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": []
+  },
+  "output": {
+    "type": "boolean",
+    "value": true
+  },
+  "effective_from": "2026-08-20",
+  "effective_to": null,
+  "supersedes": "ubbl2016_compendium_2020.res_plotted.basement_permissibility.storage_parking",
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": "13.1.3 Basement (i)-(iv)",
+      "page": 249,
+      "bbox": [
+        0.1153,
+        0.33,
+        0.879,
+        0.6458
+      ],
+      "original_text": "(i) Basement shall be permitted in all use premises, subject to approval of the concerned agencies/statutory bodies. (ii) Basement shall not be counted towards FAR if used for incidental storage, services, utilities and parking. (iii) In case the basement is used for activity in conformity with the use premises, wherever permitted, the same shall be counted in FAR subject to clearance from statutory bodies. In residential use premise, basement used for permissible mixed-use activities shall be counted towards FAR. (iv) Basement(s) may be permitted up to the setback line free of FAR only up to maximum equivalent of the parking and services requirement with prior approval of the concerned agencies/statutory bodies. Services may include air conditioning plant and equipment, water storage, boiler, electric sub-station HT and LT Panel rooms, transformer compartment, control room, pump house, generator room and other mechanical services, installation of electrical and firefighting equipment, and other services required for the maintenance of the building.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the gazette text layer, p.249. 13.1.3 applies to all use premises. Same answer as UBBL p.154 (vi) on whether a basement is permitted; it differs on extent (UBBL: not beyond the ground-floor coverage; MPD-2047 (iv): up to the setback line, free of FAR only up to the parking and services requirement) and on FAR-free uses (MPD-2047 adds services and utilities). Which governs a plotted house is not settled here; the caveat states both. effective_from is the date of S.O. 4597(E).",
+  "user_caveat": "Free of FAR only when used for storage, services, utilities or parking (MPD-2047 13.1.3); used for mixed-use activity it counts towards FAR. Extent differs between the two documents: MPD-2047 (iv) allows it up to the setback line, free of FAR only up to the parking and services requirement; UBBL p.154 (vi), written for plotted housing, says it shall not extend beyond the ground-floor coverage. Confirm the extent with the sanctioning authority."
+}

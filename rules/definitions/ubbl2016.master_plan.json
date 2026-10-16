@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.master_plan",
+  "term": "master plan",
+  "aliases": [
+    "master plan",
+    "Master Plans"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Master Plan: The Master Plan for Delhi approved by the Central Government under the Delhi Development Act. 1957 and the amendments made from time to time.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.72",
+      "page": 300,
+      "bbox": [
+        0.2164,
+        0.8982,
+        0.8776,
+        0.9113
+      ],
+      "original_text": "Master Plan: The Master Plan for Delhi approved by the Central Government under the Delhi Development Act. 1957 and the amendments made from time to time.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.72",
+      "page": 12,
+      "bbox": [
+        0.1442,
+        0.1848,
+        0.9188,
+        0.2216
+      ],
+      "original_text": "Master Plan: The Master Plan for Delhi approved by the Central Government under the Delhi Development Act. 1957 and the amendments made from time to time.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.72 (continues on p.301) by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.12."
+}

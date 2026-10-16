@@ -1,8 +1,9 @@
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import {
   materializeEffectiveTo,
   type CategoryFloor,
+  type PlotMinimum,
   type CorpusCurrency,
   type NotModelled,
   type Rule,
@@ -25,7 +26,7 @@ const NON_RULE_DIRS = new Set(["schema", "definitions"]);
  * gates every merge; the engine still refuses non-verified rules at
  * resolution time unless drafts are explicitly allowed.
  */
-export function loadRuleCorpus(rulesDir: string): Rule[] {
+export function loadRuleCorpus(rulesDir: string, options: { allowDraft?: boolean } = {}): Rule[] {
   const rules: Rule[] = [];
   for (const entry of readdirSync(rulesDir)) {
     if (NON_RULE_DIRS.has(entry)) continue;
@@ -35,7 +36,8 @@ export function loadRuleCorpus(rulesDir: string): Rule[] {
       rules.push(JSON.parse(readFileSync(path.join(dir, file), "utf8")) as Rule);
     }
   }
-  return materializeEffectiveTo(rules);
+  // Only successors the resolver may use end a predecessor's window.
+  return materializeEffectiveTo(rules, options);
 }
 
 /**
@@ -45,16 +47,36 @@ export function loadRuleCorpus(rulesDir: string): Rule[] {
  * decided not to encode. Absent or malformed, callers simply get the older,
  * blunter message; this must never be the reason an evaluation fails.
  */
-export function loadNotModelled(rulesDir: string): Map<string, NotModelled> {
-  const out = new Map<string, NotModelled>();
-  try {
-    const raw = JSON.parse(readFileSync(path.join(rulesDir, "not-modelled.json"), "utf8")) as {
-      parameters?: NotModelled[];
-    };
-    for (const entry of raw.parameters ?? []) out.set(entry.parameter, entry);
-  } catch {
-    /* declaring nothing is a valid state */
+/** Options for the declaration loaders. */
+export interface DeclarationOptions {
+  /** A missing file is an error rather than "nothing declared" — for a
+   *  production server, where a declaration that quietly vanished would
+   *  weaken every answer without anyone noticing (audit 2026-10-10 §05). */
+  required?: boolean;
+}
+
+/**
+ * Reads one declaration file. Absent: undefined, or an error when required.
+ * Present but unreadable or malformed: always an error — a broken file is
+ * never the same as an empty one.
+ */
+function readDeclaration<T>(rulesDir: string, file: string, options: DeclarationOptions): T | undefined {
+  const full = path.join(rulesDir, file);
+  if (!existsSync(full)) {
+    if (options.required) throw new Error(`rules/${file} is required but missing`);
+    return undefined;
   }
+  try {
+    return JSON.parse(readFileSync(full, "utf8")) as T;
+  } catch (e) {
+    throw new Error(`rules/${file} could not be read: ${(e as Error).message}`);
+  }
+}
+
+export function loadNotModelled(rulesDir: string, options: DeclarationOptions = {}): Map<string, NotModelled> {
+  const out = new Map<string, NotModelled>();
+  const raw = readDeclaration<{ parameters?: NotModelled[] }>(rulesDir, "not-modelled.json", options);
+  for (const entry of raw?.parameters ?? []) out.set(entry.parameter, entry);
   return out;
 }
 
@@ -63,15 +85,15 @@ export function loadNotModelled(rulesDir: string): Map<string, NotModelled> {
  * declared, which silently returns the engine to serving undercut rows — so a
  * real-corpus test (corpus.test.ts) pins that the file loads and bites.
  */
-export function loadCategoryFloors(rulesDir: string): CategoryFloor[] {
-  try {
-    const raw = JSON.parse(readFileSync(path.join(rulesDir, "category-floor.json"), "utf8")) as {
-      provisions?: CategoryFloor[];
-    };
-    return raw.provisions ?? [];
-  } catch {
-    return [];
-  }
+export function loadCategoryFloors(rulesDir: string, options: DeclarationOptions = {}): CategoryFloor[] {
+  const raw = readDeclaration<{ provisions?: CategoryFloor[] }>(rulesDir, "category-floor.json", options);
+  return raw?.provisions ?? [];
+}
+
+/** Reads rules/plot-minimum.json: the smallest plot each document allows to be developed. */
+export function loadPlotMinimums(rulesDir: string, options: DeclarationOptions = {}): PlotMinimum[] {
+  const raw = readDeclaration<{ provisions?: PlotMinimum[] }>(rulesDir, "plot-minimum.json", options);
+  return raw?.provisions ?? [];
 }
 
 /**
@@ -80,24 +102,27 @@ export function loadCategoryFloors(rulesDir: string): CategoryFloor[] {
  * show. Anything that evaluates for real (the benchmark, the invariant sweep)
  * loads these exactly as /evaluate does, or it tests answers nobody is served.
  */
-export function loadDeclarations(rulesDir: string): {
+export function loadDeclarations(
+  rulesDir: string,
+  options: DeclarationOptions = {},
+): {
   notModelled: Map<string, NotModelled>;
   categoryFloors: CategoryFloor[];
+  plotMinimums: PlotMinimum[];
 } {
-  return { notModelled: loadNotModelled(rulesDir), categoryFloors: loadCategoryFloors(rulesDir) };
+  return {
+    notModelled: loadNotModelled(rulesDir, options),
+    categoryFloors: loadCategoryFloors(rulesDir, options),
+    plotMinimums: loadPlotMinimums(rulesDir, options),
+  };
 }
 
-export function loadCorpusCurrency(rulesDir: string): CorpusCurrency | null {
-  try {
-    const raw = JSON.parse(
-      readFileSync(path.join(rulesDir, "corpus-currency.json"), "utf8"),
-    ) as Partial<CorpusCurrency>;
-    return {
-      read_against: raw.read_against ?? [],
-      unread_successors: raw.unread_successors ?? [],
-    };
-  } catch {
-    // Declaring nothing is a valid state — an older deploy has no file.
-    return null;
-  }
+export function loadCorpusCurrency(rulesDir: string, options: DeclarationOptions = {}): CorpusCurrency | null {
+  const raw = readDeclaration<Partial<CorpusCurrency>>(rulesDir, "corpus-currency.json", options);
+  // Absent and not required: nothing declared, as an older deploy had no file.
+  if (!raw) return null;
+  return {
+    read_against: raw.read_against ?? [],
+    unread_successors: raw.unread_successors ?? [],
+  };
 }

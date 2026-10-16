@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.party_wall",
+  "term": "party wall",
+  "aliases": [
+    "party wall",
+    "Party Walls"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Party Wall: It includes a. A wall forming part of a building, and being used or constructed to be used in any part of the height or length of such wall for separation or adorning buildings belonging to different owners or occupied or constructed or adapted to be occupied by different persons; or b. wall forming part of a building and standing in any part of the length of such wall, to a greater extent than the projection of the footing on one side on grounds of different owners.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": "ubbl2016.party_wall",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.82",
+      "page": 13,
+      "bbox": [
+        0.1442,
+        0.596,
+        0.919,
+        0.7229
+      ],
+      "original_text": "Party Wall: It includes a. A wall forming part of a building, and being used or constructed to be used in any part of the height or length of such wall for separation or adorning buildings belonging to different owners or occupied or constructed or adapted to be occupied by different persons; or b. wall forming part of a building and standing in any part of the length of such wall, to a greater extent than the projection of the footing on one side on grounds of different owners.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.82 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): reworded after 2016 by a notification not yet registered — one of the modifications listed on ubbl2016_compendium_2020 p.6. effective_from stays null, so this version cannot be verified until that notification is found and its date recorded. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

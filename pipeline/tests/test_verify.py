@@ -97,3 +97,56 @@ def test_already_verified_left_unchanged(rules_env):
 def test_reject_with_dir_is_refused(rules_env):
     _write(rules_env, _draft("test_doc.res_plotted.far.a"))
     assert verify.main(["--by", "M", "--reject", "--dir", "rules/test_doc"]) == 2
+
+
+def _definition(definition_id: str, **over) -> dict:
+    d = {
+        "definition_id": definition_id,
+        "term": "widget",
+        "applies_to": {"land_use": "residential_plotted", "authority": "DDA"},
+        "text": {"original": "Widget: SYNTHETIC.", "original_lang": "en", "translated": None},
+        "effective_from": "2016-01-01",
+        "effective_to": None,
+        "supersedes": None,
+        "citations": [{
+            "doc_id": "test_doc", "clause": "1.1", "page": 3, "bbox": None,
+            "original_text": "Widget: SYNTHETIC.", "original_lang": "en", "translated_text": None,
+        }],
+        "verification": {"status": "draft", "verified_by": None, "verified_on": None,
+                         "method": "pdf_text_extraction_v1", "confidence": None},
+        "notes": "",
+    }
+    d.update(over)
+    return d
+
+
+@pytest.fixture
+def defs_env(rules_env):
+    d = rules_env.parent / "definitions"
+    d.mkdir()
+    return d
+
+
+def _write_def(defs: Path, d: dict) -> None:
+    (defs / f"{d['definition_id']}.json").write_text(json.dumps(d), encoding="utf-8")
+
+
+def test_verify_definition_stamps_identity(defs_env):
+    _write_def(defs_env, _definition("test_doc.widget"))
+    assert verify.main(["--by", "Reviewer A", "--definition", "test_doc.widget"]) == 0
+    v = json.loads((defs_env / "test_doc.widget.json").read_text(encoding="utf-8"))["verification"]
+    assert (v["status"], v["verified_by"]) == ("verified", "Reviewer A")
+
+
+def test_undated_definition_cannot_be_verified(defs_env, capsys):
+    _write_def(defs_env, _definition("test_doc.widget", effective_from=None))
+    verify.main(["--by", "Reviewer A", "--definition", "test_doc.widget"])
+    assert "no effective_from" in capsys.readouterr().out
+    v = json.loads((defs_env / "test_doc.widget.json").read_text(encoding="utf-8"))["verification"]
+    assert v["status"] == "draft"
+
+
+def test_definition_verifier_cannot_be_the_extractor(defs_env, capsys):
+    _write_def(defs_env, _definition("test_doc.widget"))
+    verify.main(["--by", "pdf_text_extraction_v1", "--definition", "test_doc.widget"])
+    assert "human verifier" in capsys.readouterr().out

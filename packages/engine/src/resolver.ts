@@ -32,9 +32,17 @@ export type ResolutionOutcome =
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+/** A real calendar date, not just its shape: "2026-02-30" is refused. */
+export function isCalendarDate(date: string): boolean {
+  if (!DATE_RE.test(date)) return false;
+  const [y, m, d] = date.split("-").map(Number) as [number, number, number];
+  const t = new Date(Date.UTC(y, m - 1, d));
+  return t.getUTCFullYear() === y && t.getUTCMonth() === m - 1 && t.getUTCDate() === d;
+}
+
 function assertDate(date: string): void {
-  if (!DATE_RE.test(date)) {
-    throw new EngineError(`evaluation date must be YYYY-MM-DD, got "${date}"`);
+  if (!isCalendarDate(date)) {
+    throw new EngineError(`evaluation date must be a real YYYY-MM-DD date, got "${date}"`);
   }
 }
 
@@ -138,10 +146,19 @@ export function resolveAll(
  * begins. With multiple successors the earliest effective_from wins.
  * Amendments never mutate old rules — this returns new objects.
  */
-export function materializeEffectiveTo(ruleSet: readonly Rule[]): Rule[] {
+export function materializeEffectiveTo(
+  ruleSet: readonly Rule[],
+  options: ResolverOptions = {},
+): Rule[] {
+  /* Only a successor the resolver could actually use may end its
+     predecessor. A dated draft superseding a verified rule used to close the
+     verified one's window while being unusable itself, so the parameter went
+     unanswered (audit 2026-10-10 §06). Rejected rules never qualify. */
+  const usable = (r: Rule) =>
+    r.verification.status === "verified" || (options.allowDraft === true && r.verification.status === "draft");
   const successorFrom = new Map<string, string>();
   for (const rule of ruleSet) {
-    if (rule.supersedes === null || rule.effective_from === null) continue;
+    if (rule.supersedes === null || rule.effective_from === null || !usable(rule)) continue;
     const existing = successorFrom.get(rule.supersedes);
     if (existing === undefined || rule.effective_from < existing) {
       successorFrom.set(rule.supersedes, rule.effective_from);

@@ -28,6 +28,16 @@
       "type": "string",
       "minLength": 2
     },
+    "aliases": {
+      "description": "The forms the term takes in source text, used to find it on any page: the heading's own names and plurals (\"Dwelling Unit\", \"Tenement\"), abbreviations (\"FAR\"), and forms other documents use (\"DUs\" in the MPD-2021 tables). A form taken from another document is a claim that both documents mean the same thing; the verifier confirms it with the text. Optional; absent means the term is matched by `term` alone.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "link_in_text": {
+      "description": "Whether the source viewer underlines this term where it appears on a page. False for one-word terms too common to be worth a link (\"building\", \"floor\"); they stay defined and in the graph. Optional; absent means true.",
+      "type": "boolean"
+    },
     "applies_to": {
       "description": "Scope this definition governs. A term defined for one use or authority says nothing about another.",
       "type": "object",

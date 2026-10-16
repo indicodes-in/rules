@@ -1,0 +1,47 @@
+{
+  "definition_id": "ubbl2016.plot",
+  "term": "plot",
+  "aliases": [
+    "plot",
+    "Plots",
+    "Site",
+    "Sites"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Plot / Site: A parcel or piece of land enclosed by definite boundaries and approved by an Authority/ concerned local body as a building site, as part of approved layout plan or special areas/ unauthorized regularized colony/ village abadis/ lal dora/ extended lal dora/ resettlement colonies and slum & JJ cluster/ Rehabilitation Colonies.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.89",
+      "page": 303,
+      "bbox": [
+        0.2162,
+        0.3014,
+        0.8777,
+        0.3747
+      ],
+      "original_text": "Plot / Site: A parcel or piece of land enclosed by definite boundaries and approved by an Authority/ concerned local body as a building site, as part of approved layout plan or special areas/ unauthorized regularized colony/ village abadis/ lal dora/ extended lal dora/ resettlement colonies and slum & JJ cluster/ Rehabilitation Colonies.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.89 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

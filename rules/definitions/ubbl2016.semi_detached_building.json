@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.semi_detached_building",
+  "term": "semi-detached building",
+  "aliases": [
+    "semi-detached building",
+    "Semi-Detached Buildings"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Semi-Detached Building: A building detached on three sides with open spaces.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.101",
+      "page": 304,
+      "bbox": [
+        0.2164,
+        0.1945,
+        0.8701,
+        0.2077
+      ],
+      "original_text": "Semi-Detached Building: A building detached on three sides with open spaces.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.101",
+      "page": 14,
+      "bbox": [
+        0.1442,
+        0.6297,
+        0.7021,
+        0.6468
+      ],
+      "original_text": "Semi-Detached Building: A building detached on three sides with open spaces.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.101 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.14."
+}

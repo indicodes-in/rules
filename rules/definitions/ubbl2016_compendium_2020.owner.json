@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.owner",
+  "term": "owner",
+  "aliases": [
+    "owner",
+    "Owners"
+  ],
+  "link_in_text": false,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Owner: The owner is a person, group of persons, a Company, Trust, Institute, Registered Body, State or Central Government & its attached/ subordinate Departments, Undertaking and like in whose name the property stands registered in the revenue records/ government records/ any other legal documents up to the satisfaction of Sanctioning Authority.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": "ubbl2016.owner",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.78",
+      "page": 13,
+      "bbox": [
+        0.1442,
+        0.4146,
+        0.9189,
+        0.4892
+      ],
+      "original_text": "Owner: The owner is a person, group of persons, a Company, Trust, Institute, Registered Body, State or Central Government & its attached/ subordinate Departments, Undertaking and like in whose name the property stands registered in the revenue records/ government records/ any other legal documents up to the satisfaction of Sanctioning Authority.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.78 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): reworded after 2016 by a notification not yet registered — one of the modifications listed on ubbl2016_compendium_2020 p.6. effective_from stays null, so this version cannot be verified until that notification is found and its date recorded. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

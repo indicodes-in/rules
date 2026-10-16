@@ -63,6 +63,10 @@ export function findInapplicable(
     (r) =>
       r.parameter === parameter &&
       (options.allowDraft === true || r.verification.status === "verified") &&
+      // The same jurisdiction and use filter the resolver applies: a rule for
+      // another authority cannot explain why nothing applies here.
+      r.applicability.land_use === facts.land_use &&
+      r.applicability.authority === facts.authority &&
       isEffectiveOn(r, evaluationDate),
   );
   if (candidates.length === 0) return null; // nothing to be inapplicable

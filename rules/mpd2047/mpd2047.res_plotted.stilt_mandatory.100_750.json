@@ -1,0 +1,51 @@
+{
+  "rule_id": "mpd2047.res_plotted.stilt_mandatory.100_750",
+  "title": "Stilt mandatory for plots above 100 up to 750 sqm (MPD-2047 Other controls for Plotted Housing (vi))",
+  "parameter": "stilt_mandatory",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "between",
+        "value": [
+          100,
+          750
+        ]
+      }
+    ]
+  },
+  "output": {
+    "type": "boolean",
+    "value": true
+  },
+  "effective_from": "2026-08-20",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": "Other controls for Plotted Housing (vi)",
+      "page": 177,
+      "bbox": [
+        0.11,
+        0.593,
+        0.85,
+        0.6091
+      ],
+      "original_text": "(vi) Provision of stilt shall be mandatory for plots with area above 100 sqm up to 750 sqm.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-15",
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the gazette text layer, p.177, the first sentence of Other controls (vi); the sentence after it ('For plots above 750 sqm area, parking may be provided in the setback/stilt…') makes stilt optional above 750 sqm and is not encoded. 'Above 100 sqm up to 750 sqm' maps to the engine's exclusive-inclusive between [100, 750]. Until now this requirement lived only as a caveat on the FAR rules (mpd2047.res_plotted.far.100_250, .250_750) with no citation of its own, so the tool could state it but not open its source. effective_from is the date of S.O. 4597(E).",
+  "user_caveat": null
+}

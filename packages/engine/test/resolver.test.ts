@@ -298,3 +298,82 @@ describe("resolveAll", () => {
     }
   });
 });
+
+/* Audit 2026-10-10 §06: edge cases reproduced against the public engine. */
+describe("evaluation date is a real calendar date", () => {
+  it.each(["2026-99-99", "2026-02-30", "2025-02-29", "2026-13-01", "2026-00-10", "2026-04-31"])(
+    "rejects %s",
+    (date) => {
+      const rule = makeRule({ rule_id: "test_doc.res_plotted.far.any" });
+      expect(() => resolveParameter("far", makeFacts(), [rule], date)).toThrow(EngineError);
+    },
+  );
+  it("accepts a leap day in a leap year", () => {
+    const rule = makeRule({ rule_id: "test_doc.res_plotted.far.any" });
+    expect(resolveParameter("far", makeFacts(), [rule], "2024-02-29").status).toBe("resolved");
+  });
+});
+
+describe("a successor the resolver cannot use does not end its predecessor", () => {
+  const v1 = makeRule({ rule_id: "test_doc.res_plotted.far.band_c", effective_from: "2020-01-01" });
+  const draftV2 = makeRule({
+    rule_id: "test_doc.res_plotted.far.band_c_v2",
+    effective_from: "2026-01-01",
+    supersedes: "test_doc.res_plotted.far.band_c",
+    status: "draft",
+  });
+
+  it("keeps the verified rule in force when its successor is only a draft", () => {
+    const dated = materializeEffectiveTo([v1, draftV2]);
+    expect(dated[0]!.effective_to).toBeNull();
+    expect(resolveParameter("far", makeFacts(), dated, "2026-06-01")).toMatchObject({
+      status: "resolved",
+      rule: { rule_id: "test_doc.res_plotted.far.band_c" },
+    });
+  });
+
+  it("lets a draft successor take over only where drafts are allowed", () => {
+    const dated = materializeEffectiveTo([v1, draftV2], { allowDraft: true });
+    expect(dated[0]!.effective_to).toBe("2026-01-01");
+    expect(
+      resolveParameter("far", makeFacts(), dated, "2026-06-01", { allowDraft: true }),
+    ).toMatchObject({ status: "resolved", rule: { rule_id: "test_doc.res_plotted.far.band_c_v2" } });
+  });
+
+  it("never lets a rejected successor end anything", () => {
+    const rejected = { ...draftV2, verification: { ...draftV2.verification, status: "rejected" as const } };
+    expect(materializeEffectiveTo([v1, rejected], { allowDraft: true })[0]!.effective_to).toBeNull();
+  });
+
+  it("takes the earliest eligible successor when there are several", () => {
+    const v2 = makeRule({ rule_id: "a_v2", effective_from: "2024-01-01", supersedes: "test_doc.res_plotted.far.band_c" });
+    const v3 = makeRule({ rule_id: "a_v3", effective_from: "2023-01-01", supersedes: "test_doc.res_plotted.far.band_c", status: "draft" });
+    expect(materializeEffectiveTo([v1, v2, v3])[0]!.effective_to).toBe("2024-01-01");
+  });
+});
+
+
+/* Audit 2026-10-10 §02: the "newer document not yet read" warning belongs to
+   the evaluation date — not to every evaluation, whenever it is dated. */
+import { evaluatePlot } from "../src/evaluate.js";
+describe("the currency warning follows the evaluation date", () => {
+  const rule = makeRule({ rule_id: "test_doc.res_plotted.far.any" });
+  const currency = {
+    read_against: [{ doc_id: "old", label: "OLD-PLAN", note: null }],
+    unread_successors: [
+      { doc_id: "new", label: "NEW-PLAN", instrument: null, notified: "2026-08-20", rules_extracted: 0, note: null },
+    ],
+  };
+  it("warns for a date on or after the successor was notified", () => {
+    const r = evaluatePlot(makeFacts(), [rule], "2026-08-20", "v", { currency });
+    expect(r.meta.currency?.unread_successors.map((u) => u.label)).toEqual(["NEW-PLAN"]);
+  });
+  it("does not warn for a date before it existed", () => {
+    const r = evaluatePlot(makeFacts(), [rule], "2026-08-19", "v", { currency });
+    expect(r.meta.currency).toBeUndefined();
+  });
+  it("keeps an undated successor, since it cannot be shown to come later", () => {
+    const undated = { ...currency, unread_successors: [{ ...currency.unread_successors[0]!, notified: null }] };
+    expect(evaluatePlot(makeFacts(), [rule], "2010-01-01", "v", { currency: undated }).meta.currency).toBeDefined();
+  });
+});

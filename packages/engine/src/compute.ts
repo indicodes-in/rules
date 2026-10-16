@@ -22,6 +22,15 @@ export interface DerivedValue {
    * literally in the cited clause — the citation proves the *rate*, and the
    * reader is entitled to see how we got from that to the figure on screen. */
   note?: string;
+  /** The arithmetic, with the inputs it used, in one line: shown in the open
+   * beside a calculated value so it can be reproduced without opening the
+   * sources (architect UX audit, 14 Oct 2026). Any assumption is named. */
+  working?: string;
+}
+
+/** A display figure: at most two decimals, no trailing zeros. */
+function fig(n: number): string {
+  return String(Math.round(n * 100) / 100);
 }
 
 export interface ComputeResult {
@@ -68,6 +77,7 @@ export function computeDerived(
       citations: far.citations,
       derived_via: "buildable_area",
       input_rule_ids: [far.rule_id],
+      working: `${fig(facts.plot_area_sqm)} m² plot × FAR ${fig(far.value / 100)} = ${fig((facts.plot_area_sqm * far.value) / 100)} m²`,
     };
   }
 
@@ -79,6 +89,7 @@ export function computeDerived(
       citations: coverage.citations,
       derived_via: "coverage_area",
       input_rule_ids: [coverage.rule_id],
+      working: `${fig(facts.plot_area_sqm)} m² plot × ${fig(coverage.value)}% = ${fig((facts.plot_area_sqm * coverage.value) / 100)} m²`,
     };
   }
 
@@ -101,7 +112,22 @@ export function computeDerived(
         ? null
         : { value: rate, citations: parking.rule.citations, rule_id: parking.rule.rule_id };
 
-    if (output.type === "flag") {
+    if (
+      output.type === "formula" &&
+      output.formula_id === "ecs_fixed" &&
+      typeof output.params["ecs"] === "number"
+    ) {
+      // A count for the plot, not a rate: no floor area involved, so it
+      // stands even where FAR is withheld.
+      derived["parking_ecs"] = {
+        value: output.params["ecs"],
+        unit: "count",
+        citations: parking.rule.citations,
+        derived_via: "ecs_fixed",
+        input_rule_ids: [parking.rule.rule_id],
+        working: `${fig(output.params["ecs"])} ECS, a fixed number for plots of this size`,
+      };
+    } else if (output.type === "flag") {
       // A `flag`-type rule states a requirement in prose (e.g. "parking within
       // the plot") rather than a computable rate. That is the rule working as
       // written — the flag it carries is already surfaced by the resolver, so
@@ -135,6 +161,10 @@ export function computeDerived(
         citations,
         derived_via: "ecs_per_bua",
         input_rule_ids: ruleIds,
+        // The count assumes the whole FAR allowance is built; say so.
+        working:
+          `${round(buildable)} m² floor area (the full FAR allowance) ÷ 100 × ${round(parkingInput.value)} ECS ` +
+          `= ${round(exact)}${exact === rounded ? " ECS" : `, rounded up to ${rounded} ECS`}`,
         // The cited clause gives a rate, never this count. Someone opening the
         // citation to check "8" finds "1 ECS for every 100 sq.m." and no 8 —
         // so the arithmetic has to travel with the number. The rounding
@@ -145,10 +175,10 @@ export function computeDerived(
           ? {}
           : {
               note:
-                `${round(buildable)} m² built-up ÷ 100 × ${round(parkingInput.value)} ` +
-                `= ${round(exact)} ECS, shown rounded up to ${rounded}. The clause gives the ` +
-                `rate, not a rounding rule — the whole number is our conservative reading, ` +
-                `not the source's. Confirm with the sanctioning authority.`,
+                // The arithmetic is in `working`; this says whose rounding it is.
+                `Rounded up to ${rounded}. The clause gives the rate, not a rounding rule — the ` +
+                `whole number is our conservative reading, not the source's. Confirm with the ` +
+                `sanctioning authority.`,
             }),
       };
     }
@@ -166,6 +196,7 @@ export function computeDerived(
       citations,
       derived_via: "stilt_height_bonus",
       input_rule_ids: ruleIds,
+      working: `${fig(height.value)} m + ${fig(bonus.value)} m for stilt parking = ${fig(height.value + bonus.value)} m`,
     };
   }
 

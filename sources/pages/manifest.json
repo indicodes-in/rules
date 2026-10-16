@@ -1,6 +1,6 @@
 {
   "$comment": [
-    "Single-page extracts of every page a verified rule or declared provision",
+    "Single-page extracts of every page a verified rule, verified definition or declared provision",
     "cites, cut by `python -m pipeline.cite_pages` from the registered source",
     "PDFs (sources/sources.json). Generated — do not edit by hand.",
     "`pnpm rules:validate` fails when a cited page has no entry here."
@@ -19,6 +19,97 @@
       "file": "sources/pages/mpd2021_mod_2022/p64.pdf",
       "source_sha256": "d21998d313944cd9e6818b7157ab28573d78b37e6f732c78330a45977b117cf3",
       "extract_sha256": "6822fa0ff1ddae3d1c0f44f210bbef056b7d181920b10f092c2e71e9e763e41a"
+    },
+    {
+      "doc_id": "mpd2047",
+      "page": 176,
+      "file": "sources/pages/mpd2047/p176.pdf",
+      "source_sha256": "1fa153c0e9f4a08b2a91b6493e14236d31bbeeb28fa75d8c7f9a9df20e418848",
+      "extract_sha256": "e795207677336866182a952be871637551d723bde35837a32e3c6e902ef6ae21"
+    },
+    {
+      "doc_id": "mpd2047",
+      "page": 177,
+      "file": "sources/pages/mpd2047/p177.pdf",
+      "source_sha256": "1fa153c0e9f4a08b2a91b6493e14236d31bbeeb28fa75d8c7f9a9df20e418848",
+      "extract_sha256": "3cd003cf3d1d2a48a4b1c0c7b6fd66504db6cf25d5f4d89cd39ef09cecb35fa4"
+    },
+    {
+      "doc_id": "mpd2047",
+      "page": 178,
+      "file": "sources/pages/mpd2047/p178.pdf",
+      "source_sha256": "1fa153c0e9f4a08b2a91b6493e14236d31bbeeb28fa75d8c7f9a9df20e418848",
+      "extract_sha256": "eced12c54ccb33f2bb9d80bc7e3ca76289698b8cca93f12ac63a98f2886650b3"
+    },
+    {
+      "doc_id": "mpd2047",
+      "page": 222,
+      "file": "sources/pages/mpd2047/p222.pdf",
+      "source_sha256": "1fa153c0e9f4a08b2a91b6493e14236d31bbeeb28fa75d8c7f9a9df20e418848",
+      "extract_sha256": "975fd4e85ddfec2d4a20267749784dea09068f87f6de8316c59c3c2a50eae860"
+    },
+    {
+      "doc_id": "mpd2047",
+      "page": 249,
+      "file": "sources/pages/mpd2047/p249.pdf",
+      "source_sha256": "1fa153c0e9f4a08b2a91b6493e14236d31bbeeb28fa75d8c7f9a9df20e418848",
+      "extract_sha256": "a1a29060f0ec64a88a8c440e7396a3fb2a24f3ce60f8d55a7471bf1180f9897e"
+    },
+    {
+      "doc_id": "ubbl2016",
+      "page": 296,
+      "file": "sources/pages/ubbl2016/p296.pdf",
+      "source_sha256": "9fdc82012adca2b38a34d2d13b046bc584fc93e7e3f5553d50c29de33016f01f",
+      "extract_sha256": "bc4597220e1175b471e39a377bc9574c31781d68a82ac9c4560da01b4c1f46c4"
+    },
+    {
+      "doc_id": "ubbl2016",
+      "page": 297,
+      "file": "sources/pages/ubbl2016/p297.pdf",
+      "source_sha256": "9fdc82012adca2b38a34d2d13b046bc584fc93e7e3f5553d50c29de33016f01f",
+      "extract_sha256": "6660e43af7088107be3af482858a1c51125527b7f583ac623cf8b55ff158a59a"
+    },
+    {
+      "doc_id": "ubbl2016",
+      "page": 304,
+      "file": "sources/pages/ubbl2016/p304.pdf",
+      "source_sha256": "9fdc82012adca2b38a34d2d13b046bc584fc93e7e3f5553d50c29de33016f01f",
+      "extract_sha256": "3584b632345157076c6768b88e5d9c6a8af1723fda8b3eeb8e44f7fd51139db9"
+    },
+    {
+      "doc_id": "ubbl2016",
+      "page": 305,
+      "file": "sources/pages/ubbl2016/p305.pdf",
+      "source_sha256": "9fdc82012adca2b38a34d2d13b046bc584fc93e7e3f5553d50c29de33016f01f",
+      "extract_sha256": "289e79ce0f3d7b948f2ddbc62cc2ef74a94b95c1d465009598fb6f14fbafa9c8"
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "page": 8,
+      "file": "sources/pages/ubbl2016_compendium_2020/p8.pdf",
+      "source_sha256": "6d077c625d3e05783da3b2d2c68ba372796a2c8bb663f485c4e73eb2ea019c6d",
+      "extract_sha256": "d495008ebbb94f7ca4a5098009375d04bb47d2f55922b2a06ff3a9801d7720ac"
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "page": 9,
+      "file": "sources/pages/ubbl2016_compendium_2020/p9.pdf",
+      "source_sha256": "6d077c625d3e05783da3b2d2c68ba372796a2c8bb663f485c4e73eb2ea019c6d",
+      "extract_sha256": "a3c206cf21ce40f1409fecfd5d6a2e3b7f91820e4863681312d9c92e38c41a97"
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "page": 15,
+      "file": "sources/pages/ubbl2016_compendium_2020/p15.pdf",
+      "source_sha256": "6d077c625d3e05783da3b2d2c68ba372796a2c8bb663f485c4e73eb2ea019c6d",
+      "extract_sha256": "a75a2595095acfca19c91d8b37ff03999bb5e01a3e03158384d9c93edf2d2def"
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "page": 64,
+      "file": "sources/pages/ubbl2016_compendium_2020/p64.pdf",
+      "source_sha256": "6d077c625d3e05783da3b2d2c68ba372796a2c8bb663f485c4e73eb2ea019c6d",
+      "extract_sha256": "9ec541e25a4e96e86e266bd040adf8770e75b1fb93f24f44a5cee6eb4b56f3b7"
     },
     {
       "doc_id": "ubbl2016_compendium_2020",

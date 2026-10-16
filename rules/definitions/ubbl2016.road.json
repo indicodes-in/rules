@@ -1,0 +1,61 @@
+{
+  "definition_id": "ubbl2016.road",
+  "term": "road",
+  "aliases": [
+    "road",
+    "Roads",
+    "Street",
+    "Streets"
+  ],
+  "link_in_text": false,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Road/Street: Any highway, street, lane, pathway, alley, stairway, passageway, carriageway, footway, square, place or bridge, whether a thoroughfare or not, over which the public have a right of passage or access or have passed and had access uninterruptedly for a specified period, whether existing or proposed in any scheme, and includes all bunds, channels, ditches, storm-water drains, culverts, sidewalks, traffic islands, roadside trees and hedges, retaining walls, fences, barriers and railings within the street lines.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.96",
+      "page": 303,
+      "bbox": [
+        0.2164,
+        0.7305,
+        0.8777,
+        0.8339
+      ],
+      "original_text": "Road/Street: Any highway, street, lane, pathway, alley, stairway, passageway, carriageway, footway, square, place or bridge, whether a thoroughfare or not, over which the public have a right of passage or access or have passed and had access uninterruptedly for a specified period, whether existing or proposed in any scheme, and includes all bunds, channels, ditches, storm-water drains, culverts, sidewalks, traffic islands, roadside trees and hedges, retaining walls, fences, barriers and railings within the street lines.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.96",
+      "page": 14,
+      "bbox": [
+        0.1442,
+        0.4006,
+        0.919,
+        0.4953
+      ],
+      "original_text": "Road/Street: Any highway, street, lane, pathway, alley, stairway, passageway, carriageway, footway, square, place or bridge, whether a thoroughfare or not, over which the public have a right of passage or access or have passed and had access uninterruptedly for a specified period, whether existing or proposed in any scheme, and includes all bunds, chan-nels, ditches, storm-water drains, culverts, sidewalks, traffic islands, roadside trees and hedges, retaining walls, fences, barriers and railings within the street lines.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.96 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.14."
+}

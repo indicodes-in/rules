@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.wheel_chair",
+  "term": "wheel chair",
+  "aliases": [
+    "wheel chair",
+    "Wheel chairs"
+  ],
+  "link_in_text": false,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Wheel chair: Chair used by disabled people for mobility.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": "ubbl2016.wheel_chair",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.133",
+      "page": 16,
+      "bbox": [
+        0.1442,
+        0.3448,
+        0.5553,
+        0.3619
+      ],
+      "original_text": "Wheel chair: Chair used by disabled people for mobility.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.133 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): reworded after 2016 by a notification not yet registered — one of the modifications listed on ubbl2016_compendium_2020 p.6. effective_from stays null, so this version cannot be verified until that notification is found and its date recorded. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

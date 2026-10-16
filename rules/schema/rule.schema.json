@@ -41,7 +41,8 @@
         "parking_ecs_per_100sqm",
         "basement_permissibility",
         "stilt_height_bonus_m",
-        "stilt_far_exemption"
+        "stilt_far_exemption",
+        "stilt_mandatory"
       ]
     },
     "applicability": {
@@ -354,7 +355,7 @@
           "then": {
             "properties": {
               "value": {
-                "description": "Inclusive-exclusive [lo, hi) — band boundaries belong to exactly one band. The engine implements this semantic; tests must cover exact-boundary facts.",
+                "description": "Exclusive-inclusive (lo, hi] — implemented as actual > lo && actual <= hi, matching the tables' band wording (\"Above 100 to 250\" = more than 100, up to 250). Each boundary belongs to exactly one band; tests must cover both exact boundaries.",
                 "type": "array",
                 "items": {
                   "type": "number"

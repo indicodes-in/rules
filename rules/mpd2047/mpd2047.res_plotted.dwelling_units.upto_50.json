@@ -1,0 +1,48 @@
+{
+  "rule_id": "mpd2047.res_plotted.dwelling_units.upto_50",
+  "title": "Max 3 dwelling units for plots up to 50 sqm (MPD-2047 Table 7.2, row 1)",
+  "parameter": "dwelling_units",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "lte",
+        "value": 50
+      }
+    ]
+  },
+  "output": {
+    "type": "scalar",
+    "value": 3,
+    "unit": "count"
+  },
+  "effective_from": "2026-08-20",
+  "effective_to": null,
+  "supersedes": "mpd2021_mod_2022.res_plotted.dwelling_units.upto_50",
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": "Table 7.2 (DCN for Plotted Housing), row 1",
+      "page": 176,
+      "bbox": [
+        0.2576,
+        0.8486,
+        0.8357,
+        0.8687
+      ],
+      "original_text": "1. Up to 50 90 350 3",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the gazette text layer, p.176. Same as MPD-2021 (3, mpd2021_mod_2022.res_plotted.dwelling_units.upto_50). effective_from is the date of S.O. 4597(E) (notified 20.08.2026); the plan states no other commencement date. Band conditions copied from the MPD-2021 row it supersedes — the two tables print the same bands."
+}

@@ -14,9 +14,9 @@ under the DDA** — Master Plan for Delhi 2021 and the Unified Building Bye-Laws
 
 | | |
 |---|---|
-| Verified rules | 54 |
-| Draft rules (not yet reviewed) | 25 |
-| Parameters | 10 |
+| Verified rules | 110 |
+| Draft rules (not yet reviewed) | 0 |
+| Parameters | 11 |
 | Source documents registered | 7 |
 
 ## What a rule looks like
@@ -49,7 +49,7 @@ past answer stays reproducible.
 - **Every number cites its source.** Check it there.
 - **MPD-2047** was notified on 20 August 2026. Its rules are drafts here; which
   plan governs a plot today is not settled by this data.
-- Decision support, not statutory sanction. Verify with the sanctioning authority.
+- Early design guidance, not building approval. Verify with the sanctioning authority.
 
 ## Use it
 

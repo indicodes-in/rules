@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.exit",
+  "term": "exit",
+  "aliases": [
+    "exit",
+    "Exits"
+  ],
+  "link_in_text": false,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Exit: An exit may be a doorway; corridor; passageway(s) to an internal staircase, or external staircase, or to a verandah or terrace(s), which have access to the street, or to the roof of a building or a refuge area. An exit may also include a horizontal exit leading to an adjoining building at the same level. a. Vertical Exit: A Vertical exit is a means of exit used for ascension or descension between two or more levels including stairways, fire towers, ramps, and fire escapes. b. Horizontal Exit: A horizontal exit is a protected opening, through or around a fire wall a bridge connecting two buildings.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.36",
+      "page": 298,
+      "bbox": [
+        0.2164,
+        0.1853,
+        0.8805,
+        0.3537
+      ],
+      "original_text": "Exit: An exit may be a doorway; corridor; passageway(s) to an internal staircase, or external staircase, or to a verandah or terrace(s), which have access to the street, or to the roof of a building or a refuge area. An exit may also include a horizontal exit leading to an adjoining building at the same level. a. Vertical Exit: A Vertical exit is a means of exit used for ascension or descension between two or more levels including stairways, fire towers, ramps, and fire escapes. b. Horizontal Exit: A horizontal exit is a protected opening, through or around a fire wall a bridge connecting two buildings.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.36",
+      "page": 9,
+      "bbox": [
+        0.1442,
+        0.7593,
+        0.919,
+        0.9087
+      ],
+      "original_text": "Exit: An exit may be a doorway; corridor; passageway(s) to an internal staircase, or external staircase, or to a verandah or terrace(s), which have access to the street, or to the roof of a building or a refuge area. An exit may also include a horizontal exit leading to an adjoining building at the same level. a. Vertical Exit: A Vertical exit is a means of exit used for ascension or descension between two or more levels including stairways, fire towers, ramps, and fire escapes. b. Horizontal Exit: A horizontal exit is a protected opening, through or around a fire wall a bridge connecting two buildings.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.36 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.9."
+}

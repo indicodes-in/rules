@@ -1,6 +1,6 @@
 {
   "rule_id": "mpd2047.res_plotted.ground_coverage_pct.3000_3750",
-  "title": "Max ground coverage 50% for plots above 3000 up to 3750 sqm (Plotted Housing table, row 9)",
+  "title": "Max ground coverage 50% for plots above 3000 up to 3750 sqm (MPD-2047 Table 7.2, row 9)",
   "parameter": "ground_coverage_pct",
   "applicability": {
     "land_use": "residential_plotted",
@@ -21,19 +21,19 @@
     "value": 50,
     "unit": "pct"
   },
-  "effective_from": null,
+  "effective_from": "2026-08-20",
   "effective_to": null,
-  "supersedes": null,
+  "supersedes": "mpd2021_mod_2022.res_plotted.ground_coverage_pct.3000_3750",
   "citations": [
     {
       "doc_id": "mpd2047",
-      "clause": null,
+      "clause": "Table 7.2 (DCN for Plotted Housing), row 9",
       "page": 177,
       "bbox": [
         0.2576,
-        0.2683,
-        0.8458,
-        0.2831
+        0.2646,
+        0.8408,
+        0.2836
       ],
       "original_text": "9. Above 3000 up to 3750 50 200 10",
       "original_lang": "en",
@@ -41,11 +41,11 @@
     }
   ],
   "verification": {
-    "status": "draft",
-    "verified_by": null,
-    "verified_on": null,
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
     "method": "llm_extraction_v1",
     "confidence": 0.9
   },
-  "notes": "Prose 'Above 3000 up to 3750': 3000 belongs to LOWER band, 3750 belongs to THIS band."
+  "notes": "Read from the gazette text layer, p.177. Same as MPD-2021 (50, mpd2021_mod_2022.res_plotted.ground_coverage_pct.3000_3750). effective_from is the date of S.O. 4597(E) (notified 20.08.2026); the plan states no other commencement date. Band conditions copied from the MPD-2021 row it supersedes — the two tables print the same bands."
 }

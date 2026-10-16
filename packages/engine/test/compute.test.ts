@@ -117,6 +117,22 @@ describe("computeDerived (spec §5.3)", () => {
     expect(derived["parking_ecs"]?.value).toBe(6);
   });
 
+  it("takes a fixed ECS count as the count, with no floor area needed", () => {
+    const { derived, flags } = computeDerived(
+      {
+        parking_ecs_per_100sqm: resolved(
+          "parking_ecs_per_100sqm",
+          "test_doc.res_plotted.parking_ecs_per_100sqm.small",
+          { type: "formula", formula_id: "ecs_fixed", params: { ecs: 1 } },
+        ),
+      },
+      makeFacts(),
+    );
+    expect(flags).toHaveLength(0);
+    expect(derived["parking_ecs"]).toMatchObject({ value: 1, unit: "count", derived_via: "ecs_fixed" });
+    expect(derived["parking_ecs"]?.input_rule_ids).toEqual(["test_doc.res_plotted.parking_ecs_per_100sqm.small"]);
+  });
+
   it("flags parking when FAR is unresolved instead of guessing", () => {
     const { derived, flags } = computeDerived(
       {

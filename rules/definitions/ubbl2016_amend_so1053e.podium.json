@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016_amend_so1053e.podium",
+  "term": "podium",
+  "aliases": [
+    "podium",
+    "Podiums"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Podium: A raised platform constructed as top most level of any single/ multilevel parking which can be used for landscaping, plantation, tot-lot, swimming pool, deck, assembly space, movement, building tower/s, parking etc.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2017-04-05",
+  "effective_to": null,
+  "supersedes": "ubbl2016.podium",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_amend_so1053e",
+      "clause": "1.4.90",
+      "page": 47,
+      "bbox": [
+        0.4727,
+        0.4175,
+        0.908,
+        0.484
+      ],
+      "original_text": "Podium: A raised platform constructed as top most level of any single/ multilevel parking which can be used for landscaping, plantation, tot-lot, swimming pool, deck, assembly space, movement, building tower/s, parking etc.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.90",
+      "page": 14,
+      "bbox": [
+        0.1442,
+        0.1839,
+        0.919,
+        0.2204
+      ],
+      "original_text": "Podium: A raised platform constructed as top most level of any single/ multilevel parking which can be used for landscaping, plantation, tot-lot, swimming pool, deck, assembly space, movement, building tower/s, parking etc.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_amend_so1053e, clause 1.4.90 by pipeline.definitions — no model involved. Confirm the text and box against the page. Modified clause from the notification's right-hand column, p.47. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.14."
+}

@@ -38,11 +38,11 @@
     }
   ],
   "verification": {
-    "status": "draft",
-    "verified_by": null,
-    "verified_on": null,
+    "status": "rejected",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-15",
     "method": "llm_extraction_v1",
     "confidence": 0.85
   },
-  "notes": "Bonus derived as difference between 17.5m (with stilt) and 15m (without stilt); page states absolute heights, not the bonus explicitly. Verify."
+  "notes": "Bonus derived as difference between 17.5m (with stilt) and 15m (without stilt); page states absolute heights, not the bonus explicitly. Verify. [REJECTED 2026-10-15: clause (iv) states two heights, not a bonus; the tool shows height with and without stilt (review D4)]"
 }

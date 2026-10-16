@@ -2,6 +2,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import {
+  ADVISORY_PARAMETERS,
   evaluatePlot as evaluate,
   PARAMETERS,
   validateParcelFacts,
@@ -94,7 +95,12 @@ describe("logic sweep over the verified corpus", () => {
     const answeredAs: Record<string, string> = { parking_ecs_per_100sqm: "parking_ecs" };
     const bad: string[] = [];
     for (const { area, stilt, result } of SWEEP) {
+      // Below the minimum plot size the whole plot is declined, with its clause.
+      if (result.flags.some((f) => f.code === "below_minimum_plot")) continue;
       for (const p of PARAMETERS) {
+        // Advisory parameters are said only where the plan imposes them;
+        // elsewhere their absence is the answer (engine types.ts).
+        if (ADVISORY_PARAMETERS.includes(p)) continue;
         if (result.parameters[p] || result.parameters[answeredAs[p] ?? ""]) continue;
         if (result.flags.some((f) => f.parameter === p)) continue;
         bad.push(`${area} m²${stilt ? " stilt" : ""}: ${p} neither answered nor flagged`);

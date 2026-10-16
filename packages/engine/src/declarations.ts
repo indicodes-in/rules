@@ -32,6 +32,21 @@ export interface CategoryFloor {
 }
 
 /**
+ * The smallest plot a document allows to be developed (rules/plot-minimum.json).
+ * Below it the standard table does not apply, so the engine declines.
+ */
+export interface PlotMinimum {
+  id: string;
+  min_plot_area_sqm: number;
+  effective_from: string;
+  effective_to: string | null;
+  /** A named exception the engine does not assume (e.g. EWS schemes). */
+  exception: string | null;
+  citation: Citation;
+  verification: { status: "verified" | "draft"; verified_by: string | null; verified_on: string | null };
+}
+
+/**
  * How current this corpus is (rules/corpus-currency.json).
  *
  * Every rule carries `effective_from` and none carries `effective_to`, so the

@@ -1,0 +1,63 @@
+{
+  "definition_id": "ubbl2016.dwelling_unit",
+  "term": "dwelling unit",
+  "aliases": [
+    "dwelling unit",
+    "Dwelling Units",
+    "Tenement",
+    "Tenements",
+    "DU",
+    "DUs"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Dwelling Unit / Tenement: An independent housing unit with separate facilities for living, cooking (maximum one kitchen)and sanitary requirement",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": "draft.dwelling_unit",
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.32",
+      "page": 297,
+      "bbox": [
+        0.2164,
+        0.7941,
+        0.8777,
+        0.8222
+      ],
+      "original_text": "Dwelling Unit / Tenement: An independent housing unit with separate facilities for living, cooking (maximum one kitchen)and sanitary requirement",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.32",
+      "page": 9,
+      "bbox": [
+        0.1397,
+        0.6122,
+        0.9188,
+        0.6491
+      ],
+      "original_text": "Dwelling Unit / Tenement: An independent housing unit with separate facilities for living, cooking (maximum one kitchen)and sanitary requirement",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.32 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.9. Aliases DU, DUs: MPD-2021 tables abbreviate dwelling units as \"DUs\" (e.g. \"No. of DUs\"). Supersedes draft.dwelling_unit, the placeholder opened before this clause was found."
+}

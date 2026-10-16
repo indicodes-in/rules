@@ -1,0 +1,60 @@
+{
+  "definition_id": "ubbl2016.water_closet",
+  "term": "water closet",
+  "aliases": [
+    "water closet",
+    "Water Closets",
+    "WC"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Water Closet (WC): A privy with arrangement for flushing the pan with water. It does not include a bathroom.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.126",
+      "page": 305,
+      "bbox": [
+        0.2164,
+        0.6497,
+        0.8777,
+        0.6778
+      ],
+      "original_text": "Water Closet (WC): A privy with arrangement for flushing the pan with water. It does not include a bathroom.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.126",
+      "page": 15,
+      "bbox": [
+        0.1442,
+        0.7849,
+        0.8977,
+        0.802
+      ],
+      "original_text": "Water Closet (WC): A privy with arrangement for flushing the pan with water. It does not include a bathroom.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.126 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.15."
+}

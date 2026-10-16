@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.parking_space",
+  "term": "parking space",
+  "aliases": [
+    "parking space",
+    "Parking Spaces"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Parking Space: An area enclosed or unenclosed, covered or open, sufficient in size to park vehicles, together with a driveway connecting the parking space with a street or alley and permitting ingress and egress of the vehicles.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.80",
+      "page": 302,
+      "bbox": [
+        0.2164,
+        0.6192,
+        0.8777,
+        0.6624
+      ],
+      "original_text": "Parking Space: An area enclosed or unenclosed, covered or open, sufficient in size to park vehicles, together with a driveway connecting the parking space with a street or alley and permitting ingress and egress of the vehicles.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.80",
+      "page": 13,
+      "bbox": [
+        0.1442,
+        0.5245,
+        0.9188,
+        0.5607
+      ],
+      "original_text": "Parking Space: An area enclosed or unenclosed, covered or open, sufficient in size to park vehicles, together with a driveway connecting the parking space with a street or alley and permitting ingress and egress of the vehicles.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.80 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.13."
+}

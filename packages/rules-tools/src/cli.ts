@@ -135,12 +135,14 @@ for (const parameter of PARAMETERS) {
 }
 
 // Cited-page extracts: "open the page" must not depend on object storage.
-const floorPath = path.join(rulesDir, "category-floor.json");
-const provisionCitations = existsSync(floorPath)
-  ? (JSON.parse(readFileSync(floorPath, "utf8")) as { provisions: { citation: PageCitation }[] }).provisions.map(
-      (p) => p.citation,
-    )
-  : [];
+const provisionCitations = ["category-floor.json", "plot-minimum.json"].flatMap((name) => {
+  const declared = path.join(rulesDir, name);
+  return existsSync(declared)
+    ? (JSON.parse(readFileSync(declared, "utf8")) as { provisions: { citation: PageCitation }[] }).provisions.map(
+        (p) => p.citation,
+      )
+    : [];
+});
 const pagesManifestPath = path.join(repoRoot, "sources", "pages", "manifest.json");
 const pagesManifest = existsSync(pagesManifestPath)
   ? (JSON.parse(readFileSync(pagesManifestPath, "utf8")) as ExtractManifest)
@@ -174,9 +176,23 @@ console.log(
   `\ndefinitions — ${verifiedDefs.length} verified, ${definitions.length - verifiedDefs.length} draft`,
 );
 if (pending.length > 0) {
-  console.log(`${pending.length} term(s) not yet defined:`);
-  for (const p of pending) {
-    const used = p.consumedBy > 0 ? `consumed by ${p.consumedBy} rule(s)` : "not yet declared by any rule";
-    console.log(`  · ${p.term} — ${p.status}, ${used}`);
+  // A whole glossary arrives as drafts at once, so list only the terms a
+  // rule leans on; the rest are a count.
+  const consumed = pending.filter((p) => p.consumedBy > 0);
+  console.log(
+    `${pending.length} term(s) not yet confirmed${consumed.length ? ":" : " — none consumed by a rule yet"}`,
+  );
+  for (const p of consumed) {
+    console.log(`  · ${p.term} — ${p.status}, consumed by ${p.consumedBy} rule(s)`);
   }
+}
+// Placeholders opened before their source was found, and still unsourced.
+const unsourced = definitions.filter(
+  (d) =>
+    d.definition.definition_id.startsWith("draft.") &&
+    !definitions.some((o) => o.definition.supersedes === d.definition.definition_id),
+);
+if (unsourced.length > 0) {
+  console.log(`${unsourced.length} term(s) with no source clause yet:`);
+  for (const d of unsourced) console.log(`  · ${d.definition.term}`);
 }

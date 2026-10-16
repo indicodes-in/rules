@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.building",
+  "term": "building",
+  "aliases": [
+    "building",
+    "Buildings"
+  ],
+  "link_in_text": false,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Building: Any structure for whatsoever purpose and whatsoever material constructed and every part thereof whether used as human habitation or not and includes foundation, plinth walls, floors, roofs, chimneys, and building services, fixed platforms, verandahs, balcony, or projection part of a building anything affixed thereto or any wall enclosing or intended to enclose any land or space and signs and outdoor display structures, monuments, memorials or any contrivance of permanent nature/stability built under or over ground .",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.15",
+      "page": 296,
+      "bbox": [
+        0.1926,
+        0.4811,
+        0.8777,
+        0.5845
+      ],
+      "original_text": "Building: Any structure for whatsoever purpose and whatsoever material constructed and every part thereof whether used as human habitation or not and includes foundation, plinth walls, floors, roofs, chimneys, and building services, fixed platforms, verandahs, balcony, or projection part of a building anything affixed thereto or any wall enclosing or intended to enclose any land or space and signs and outdoor display structures, monuments, memorials or any contrivance of permanent nature/stability built under or over ground .",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.15",
+      "page": 8,
+      "bbox": [
+        0.1397,
+        0.4313,
+        0.9189,
+        0.5255
+      ],
+      "original_text": "Building: Any structure for whatsoever purpose and whatsoever material constructed and every part thereof whether used as human habitation or not and includes foundation, plinth walls, floors, roofs, chimneys, and building services, fixed platforms, verandahs, balcony, or projection part of a building anything affixed thereto or any wall enclosing or intended to enclose any land or space and signs and outdoor display structures, monuments, memorials or any contrivance of permanent nature/stability built under or over ground .",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.15 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.8."
+}

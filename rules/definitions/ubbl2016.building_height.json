@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.building_height",
+  "term": "building height",
+  "aliases": [
+    "building height",
+    "Building Heights"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Building Height: a. The vertical distance in the case of flat roofs is measured from the highest surrounding road level/ ground level up to the top of structural slab, excluding machine room, irrespective of location of entry level. b. In the case of pitched roofs, up to the point where the external surface of the outer wall intersect the finished surface of the sloping roof, and in case of gable facing the road, the mid-point between the eaves level and the ridge. c. Architectural features serving no other function except that of decoration and other building components mentioned in clause no 7.19 shall be excluded for the purpose of taking height. d. If the building does not abut on a street, the height shall be measured from the highest level of the ground immediately adjacent to the building.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": "draft.building_height",
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.16",
+      "page": 296,
+      "bbox": [
+        0.1926,
+        0.6023,
+        0.8779,
+        0.843
+      ],
+      "original_text": "Building Height: a. The vertical distance in the case of flat roofs is measured from the highest surrounding road level/ ground level up to the top of structural slab, excluding machine room, irrespective of location of entry level. b. In the case of pitched roofs, up to the point where the external surface of the outer wall intersect the finished surface of the sloping roof, and in case of gable facing the road, the mid-point between the eaves level and the ridge. c. Architectural features serving no other function except that of decoration and other building components mentioned in clause no 7.19 shall be excluded for the purpose of taking height. d. If the building does not abut on a street, the height shall be measured from the highest level of the ground immediately adjacent to the building.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.16",
+      "page": 8,
+      "bbox": [
+        0.1397,
+        0.5347,
+        0.919,
+        0.7341
+      ],
+      "original_text": "Building Height: a. The vertical distance in the case of flat roofs is measured from the highest surrounding road level/ ground level up to the top of structural slab, excluding machine room, irrespective of location of entry level. b. In the case of pitched roofs, up to the point where the external surface of the outer wall intersect the finished surface of the sloping roof, and in case of gable facing the road, the mid-point between the eaves level and the ridge. c. Architectural features serving no other function except that of decoration and other building components mentioned in clause no 7.19 shall be excluded for the purpose of taking height. d. If the building does not abut on a street, the height shall be measured from the highest level of the ground immediately adjacent to the building.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.16 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.8. Supersedes draft.building_height, the placeholder opened before this clause was found."
+}

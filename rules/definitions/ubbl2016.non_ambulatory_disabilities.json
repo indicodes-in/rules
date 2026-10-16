@@ -1,0 +1,58 @@
+{
+  "definition_id": "ubbl2016.non_ambulatory_disabilities",
+  "term": "non-ambulatory disabilities",
+  "aliases": [
+    "non-ambulatory disabilities"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Non-Ambulatory disabilities: Impairment that, regardless of cause or manifestation, for all practical purposes, confined individuals to wheel chair.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.129",
+      "page": 305,
+      "bbox": [
+        0.2164,
+        0.832,
+        0.8776,
+        0.8601
+      ],
+      "original_text": "Non-Ambulatory disabilities: Impairment that, regardless of cause or manifestation, for all practical purposes, confined individuals to wheel chair.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.129",
+      "page": 16,
+      "bbox": [
+        0.1442,
+        0.1388,
+        0.9189,
+        0.1757
+      ],
+      "original_text": "Non-Ambulatory disabilities: Impairment that, regardless of cause or manifestation, for all practical purposes, confined individuals to wheel chair.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.129 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.16."
+}

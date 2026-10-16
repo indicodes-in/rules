@@ -1,0 +1,74 @@
+{
+  "$comment": [
+    "The smallest residential plot each document allows to be developed.",
+    "",
+    "The first size band of a development-control table is not permission to",
+    "apply the table to every positive area: each document states a minimum",
+    "plot size immediately beside it. Below it, the standard calculation does",
+    "not apply, so the engine declines with this clause and gives no values",
+    "(building-rule data audit, BR-01, 15 Oct 2026).",
+    "",
+    "MPD-2021 and UBBL allow a government-sponsored economically weaker",
+    "section scheme to reduce the size further. That exception needs its own",
+    "facts (is this such a scheme, and what size does it set); it is named in",
+    "the message, never assumed.",
+    "",
+    "Each entry carries its value, its words verbatim, the dates it governs and",
+    "a verification block: the engine uses only verified entries unless",
+    "ENGINE_ALLOW_DRAFT is set. Where several are in force on a date, the",
+    "largest minimum governs and all are cited."
+  ],
+  "provisions": [
+    {
+      "id": "mpd2021_mod_2022.res_plotted.plot_minimum",
+      "min_plot_area_sqm": 32,
+      "effective_from": "2007-02-07",
+      "effective_to": "2026-08-19",
+      "exception": "government-sponsored economically weaker section schemes may reduce it",
+      "citation": {
+        "doc_id": "mpd2021_mod_2022",
+        "clause": "Development control norms for residential plots, note 3",
+        "page": 63,
+        "bbox": [0.27, 0.5068, 0.8834, 0.5592],
+        "original_text": "3. Minimum size of the residential plot shall be 32 sqm. However, in case of Government sponsored economically weaker section schemes, size could be reduced further.",
+        "original_lang": "en",
+        "translated_text": null
+      },
+      "verification": { "status": "verified", "verified_by": "Indicodes review", "verified_on": "2026-10-15" }
+    },
+    {
+      "id": "ubbl2016_compendium_2020.res_plotted.plot_minimum",
+      "min_plot_area_sqm": 32,
+      "effective_from": "2016-03-22",
+      "effective_to": null,
+      "exception": "government-sponsored economically weaker section schemes may reduce it",
+      "citation": {
+        "doc_id": "ubbl2016_compendium_2020",
+        "clause": "Terms and conditions, note 3",
+        "page": 153,
+        "bbox": [0.18, 0.5187, 0.9225, 0.5536],
+        "original_text": "3. Minimum size of the residential plot shall be 32 sq.m. However, in case of Government sponsored economically weaker section schemes, size could be reduced further.",
+        "original_lang": "en",
+        "translated_text": null
+      },
+      "verification": { "status": "verified", "verified_by": "Indicodes review", "verified_on": "2026-10-15" }
+    },
+    {
+      "id": "mpd2047.res_plotted.plot_minimum",
+      "min_plot_area_sqm": 32,
+      "effective_from": "2026-08-20",
+      "effective_to": null,
+      "exception": null,
+      "citation": {
+        "doc_id": "mpd2047",
+        "clause": "Other controls for Plotted Housing (ii)",
+        "page": 177,
+        "bbox": [0.1145, 0.4062, 0.7176, 0.4242],
+        "original_text": "(ii) Minimum size of the residential plot shall be 32 sqm for development.",
+        "original_lang": "en",
+        "translated_text": null
+      },
+      "verification": { "status": "verified", "verified_by": "Indicodes review", "verified_on": "2026-10-15" }
+    }
+  ]
+}

@@ -5,8 +5,11 @@
 
 export {
   loadCategoryFloors,
+  loadPlotMinimums,
   loadCorpusCurrency,
   loadDeclarations,
   loadNotModelled,
   loadRuleCorpus,
 } from "./corpus.js";
+export { definitionsInForce, loadDefinitions, type GlossaryCitation, type ServedDefinition } from "./glossary.js";
+export type { DefinitionFile } from "./types.js";

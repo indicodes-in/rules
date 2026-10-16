@@ -1,0 +1,46 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.built_up_area",
+  "term": "built-up area",
+  "aliases": [
+    "built-up area",
+    "Built up Area",
+    "Built up Areas"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Built up Area: The area covered by a building on all floors within the premise, used for activities or use, including cantilevered portion, basement, stilt/podium, utility, services, mezzanine floors (if any), other similar areas.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": "ubbl2016.built_up_area",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.18",
+      "page": 8,
+      "bbox": [
+        0.1397,
+        0.8081,
+        0.9189,
+        0.8445
+      ],
+      "original_text": "Built up Area: The area covered by a building on all floors within the premise, used for activities or use, including cantilevered portion, basement, stilt/podium, utility, services, mezzanine floors (if any), other similar areas.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.18 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): reworded after 2016 by a notification not yet registered — one of the modifications listed on ubbl2016_compendium_2020 p.6. effective_from stays null, so this version cannot be verified until that notification is found and its date recorded. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

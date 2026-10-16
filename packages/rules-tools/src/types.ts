@@ -40,6 +40,10 @@ export interface CorpusRule {
 export interface DefinitionFile {
   definition_id: string;
   term: string;
+  /** Forms the term takes in source text (spec §3.7.7). */
+  aliases?: string[];
+  /** Whether the source viewer underlines the term on a page; absent = true. */
+  link_in_text?: boolean;
   applies_to: { land_use: string; authority: string };
   text: { original: string | null; original_lang: string | null; translated: string | null };
   effective_from: string | null;

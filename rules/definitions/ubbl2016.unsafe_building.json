@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.unsafe_building",
+  "term": "unsafe building",
+  "aliases": [
+    "unsafe building",
+    "Unsafe Buildings"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Unsafe Building: Unsafe buildings are those which are structurally unsafe, insanitary or not provided with adequate means of egress or which constitute a fire hazard or are otherwise dangerous to human life or which in relation to existing use constitute a hazard to safety or health or public welfare, by reason of inadequate maintenance, dilapidation or abandonment and are a danger to human life.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.123",
+      "page": 305,
+      "bbox": [
+        0.2164,
+        0.4525,
+        0.8777,
+        0.5407
+      ],
+      "original_text": "Unsafe Building: Unsafe buildings are those which are structurally unsafe, insanitary or not provided with adequate means of egress or which constitute a fire hazard or are otherwise dangerous to human life or which in relation to existing use constitute a hazard to safety or health or public welfare, by reason of inadequate maintenance, dilapidation or abandonment and are a danger to human life.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.123",
+      "page": 15,
+      "bbox": [
+        0.1442,
+        0.6254,
+        0.9189,
+        0.7019
+      ],
+      "original_text": "Unsafe Building: Unsafe buildings are those which are structurally unsafe, insanitary or not provided with adequate means of egress or which constitute a fire hazard or are otherwise dangerous to human life or which in relation to existing use constitute a hazard to safety or health or public welfare, by reason of inadequate maintenance, dilapidation or abandon-ment and are a danger to human life.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.123 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.15."
+}

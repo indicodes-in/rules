@@ -8,10 +8,10 @@
 
 import { computeDerived } from "./compute.js";
 import { findInapplicable } from "./applicability.js";
-import type { CategoryFloor, CorpusCurrency } from "./declarations.js";
+import type { CategoryFloor, CorpusCurrency, PlotMinimum } from "./declarations.js";
 import { findBandGap, ruleBand, type BandGap } from "./gaps.js";
 import { resolveAll, resolveParameter, type ResolutionOutcome, type ResolverOptions } from "./resolver.js";
-import { PARAMETERS, type Citation, type Parameter, type ParcelFacts, type Rule } from "./types.js";
+import { ADVISORY_PARAMETERS, PARAMETERS, type Citation, type Parameter, type ParcelFacts, type Rule } from "./types.js";
 
 /** Required on every results surface (CLAUDE.md working agreements). */
 /** Fact names as an architect says them, for user-facing flag text. */
@@ -47,7 +47,7 @@ function applicabilityMessage(fact: string, required: unknown, actual: unknown):
 }
 
 export const DISCLAIMER =
-  "Decision support, not statutory sanction. Verify with the sanctioning authority.";
+  "Early design guidance, not building approval. Verify with the sanctioning authority.";
 
 export interface ParameterResult {
   value: number | boolean | null;
@@ -64,6 +64,8 @@ export interface ParameterResult {
    * the verifier's working record, and piping it here put band-boundary
    * arithmetic and "verifier to confirm" in front of architects. */
   note?: string;
+  /** For a calculated value: its arithmetic with the inputs used, in one line. */
+  working?: string;
 }
 
 export interface Flag {
@@ -328,7 +330,43 @@ export type EvaluateOptions = ResolverOptions & {
   currency?: CorpusCurrency;
   /** From rules/category-floor.json; see loadCategoryFloors and categoryFloor. */
   categoryFloors?: readonly CategoryFloor[];
+  /** From rules/plot-minimum.json; see loadPlotMinimums. */
+  plotMinimums?: readonly PlotMinimum[];
 };
+
+/**
+ * The minimum plot size in force on the date, when the plot is below it:
+ * the largest minimum among the verified (or, in dev, draft) provisions in
+ * force, citing every provision that sets it.
+ */
+function belowMinimum(
+  area: number,
+  date: string,
+  options: EvaluateOptions,
+): { min: number; provisions: PlotMinimum[] } | null {
+  const inForce = (options.plotMinimums ?? []).filter(
+    (m) =>
+      (options.allowDraft || m.verification.status === "verified") &&
+      m.effective_from <= date &&
+      (m.effective_to === null || date <= m.effective_to),
+  );
+  if (inForce.length === 0) return null;
+  const min = Math.max(...inForce.map((m) => m.min_plot_area_sqm));
+  if (area >= min) return null;
+  return { min, provisions: inForce.filter((m) => m.min_plot_area_sqm === min) };
+}
+
+/**
+ * The currency warning as it stood on the evaluation date: only successors
+ * already notified by then. A plot evaluated as at 2010 is not warned about
+ * a plan published in 2026 (audit 2026-10-10 §02); an undated successor is
+ * kept, since we cannot show it came later.
+ */
+function currencyOn(currency: CorpusCurrency | undefined, date: string): { currency?: CorpusCurrency } {
+  if (!currency) return {};
+  const due = currency.unread_successors.filter((u) => u.notified === null || u.notified <= date);
+  return due.length > 0 ? { currency: { ...currency, unread_successors: due } } : {};
+}
 
 export function evaluatePlot(
   facts: ParcelFacts,
@@ -345,9 +383,7 @@ export function evaluatePlot(
        "something newer has been published and we have not read it"; an empty
        declaration attached to every result is noise, and it leaked the real
        corpus's state into tests running a synthetic one. */
-    ...(options.currency && options.currency.unread_successors.length > 0
-      ? { currency: options.currency }
-      : {}),
+    ...currencyOn(options.currency, evaluationDate),
   };
 
   // Out-of-scope gate (spec §8): special areas and non-residential uses get
@@ -371,6 +407,22 @@ export function evaluatePlot(
     });
   }
 
+  /* Below the smallest plot the plan allows to be developed, the table does
+     not apply at all: its first band is not permission for every positive
+     area (building-rule data audit, BR-01). Declined with the clause. */
+  const tooSmall = belowMinimum(facts.plot_area_sqm, evaluationDate, options);
+  if (tooSmall) {
+    const exception = tooSmall.provisions.find((m) => m.exception)?.exception;
+    scopeFlags.push({
+      code: "below_minimum_plot",
+      message:
+        `This plot is ${facts.plot_area_sqm} m², below the ${tooSmall.min} m² minimum size for developing a ` +
+        `residential plot, so the standard calculation doesn't apply and we don't give values.` +
+        (exception ? ` The rules note that ${exception}; that is not assessed here.` : ""),
+      citations: tooSmall.provisions.map((m) => m.citation),
+    });
+  }
+
   if (scopeFlags.length > 0) {
     return { parameters: {}, flags: scopeFlags, meta };
   }
@@ -388,6 +440,8 @@ export function evaluatePlot(
 
   for (const parameter of PARAMETERS) {
     const outcome = outcomes[parameter];
+    // An advisory condition the source doesn't impose here: nothing to say.
+    if (outcome.status === "no_applicable_rule" && ADVISORY_PARAMETERS.includes(parameter)) continue;
     if (outcome.status === "no_applicable_rule") {
       // A missing rule and a gap the source table itself leaves between two
       // rows look identical here but mean opposite things to the user, so
@@ -550,6 +604,7 @@ export function evaluatePlot(
       // Carries the arithmetic for values the cited clauses don't literally
       // state (e.g. an ECS count derived from a per-100 m² rate).
       ...(value.note ? { note: value.note } : {}),
+      ...(value.working ? { working: value.working } : {}),
     };
   }
   flags.push(...computed.flags);

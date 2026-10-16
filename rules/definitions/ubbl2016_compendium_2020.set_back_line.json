@@ -1,0 +1,46 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.set_back_line",
+  "term": "set back line",
+  "aliases": [
+    "set back line",
+    "Set Back Lines",
+    "Setback Line"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Set Back Line: A line usually parallel to the plot boundaries or center line of a road and laid down in each case by the Sanctioning Authority or as per recommendations of Master/Zonal Plan, beyond which nothing can be constructed towards the plot boundaries, excepting with the permission of the Sanctioning Authority.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": "ubbl2016.set_back_line",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.104",
+      "page": 14,
+      "bbox": [
+        0.1442,
+        0.7283,
+        0.9189,
+        0.7842
+      ],
+      "original_text": "Set Back Line: A line usually parallel to the plot boundaries or center line of a road and laid down in each case by the Sanctioning Authority or as per recommendations of Master/Zonal Plan, beyond which nothing can be constructed towards the plot boundaries, excepting with the permission of the Sanctioning Authority.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.104 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): reworded after 2016 by a notification not yet registered — one of the modifications listed on ubbl2016_compendium_2020 p.6. effective_from stays null, so this version cannot be verified until that notification is found and its date recorded. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Aliases Setback Line: tables print \"setback\" as one word."
+}

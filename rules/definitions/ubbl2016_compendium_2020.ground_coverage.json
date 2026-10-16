@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.ground_coverage",
+  "term": "ground coverage",
+  "aliases": [
+    "ground coverage",
+    "Ground Coverages"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Ground Coverage: The portion of the building within the maximum outer surface of the structural wall/column/ slab measured at ground level shall be considered as ground coverage (excluding the mentioned limits of projection/ balcony/canopy /porch /void/shaft/cladding/ curtain wall etc.– refer 7.17.2 & 8.10)",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": "ubbl2016.ground_coverage",
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.57",
+      "page": 11,
+      "bbox": [
+        0.1442,
+        0.2525,
+        0.9188,
+        0.3091
+      ],
+      "original_text": "Ground Coverage: The portion of the building within the maximum outer surface of the structural wall/column/ slab measured at ground level shall be considered as ground coverage (excluding the mentioned limits of projection/ balcony/canopy /porch /void/shaft/cladding/ curtain wall etc.– refer 7.17.2 & 8.10)",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.57 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): reworded after 2016 by a notification not yet registered — one of the modifications listed on ubbl2016_compendium_2020 p.6. effective_from stays null, so this version cannot be verified until that notification is found and its date recorded. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

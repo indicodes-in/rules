@@ -17,9 +17,18 @@ export const PARAMETERS = [
   "basement_permissibility",
   "stilt_height_bonus_m",
   "stilt_far_exemption",
+  "stilt_mandatory",
 ] as const;
 
 export type Parameter = (typeof PARAMETERS)[number];
+
+/**
+ * Parameters that state a condition only where the source imposes one. Where
+ * no rule applies there is simply no such condition, so the engine says
+ * nothing — no "Not covered yet", which would cry wolf on every plot outside
+ * the band — and they do not count towards the values a plot is checked for.
+ */
+export const ADVISORY_PARAMETERS: readonly Parameter[] = ["stilt_mandatory"];
 
 /** Facts usable in rule conditions (spec §5.1; land_use/authority are applicability-level). */
 export const CONDITION_FACTS = [

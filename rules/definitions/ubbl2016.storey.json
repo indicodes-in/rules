@@ -1,0 +1,59 @@
+{
+  "definition_id": "ubbl2016.storey",
+  "term": "storey",
+  "aliases": [
+    "storey",
+    "Storeys"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Storey: The portion of a building included between the surface of any floor and the surface of the floor next above it, or if there be no floor above it, then the space between any floor and the ceiling next above it.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": "2016-03-22",
+  "effective_to": null,
+  "supersedes": "draft.storey",
+  "citations": [
+    {
+      "doc_id": "ubbl2016",
+      "clause": "1.4.114",
+      "page": 304,
+      "bbox": [
+        0.2164,
+        0.8146,
+        0.8777,
+        0.8577
+      ],
+      "original_text": "Storey: The portion of a building included between the surface of any floor and the surface of the floor next above it, or if there be no floor above it, then the space between any floor and the ceiling next above it.",
+      "original_lang": "en",
+      "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.114",
+      "page": 15,
+      "bbox": [
+        0.1442,
+        0.2855,
+        0.919,
+        0.3224
+      ],
+      "original_text": "Storey: The portion of a building included between the surface of any floor and the surface of the floor next above it, or if there be no floor above it, then the space between any floor and the ceiling next above it.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016, clause 1.4.114 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): effective_from 2016-03-22 is the date of S.O. 1191(E), as used by the verified UBBL rules; clause 1.0 says the bye-laws come into force on a date appointed by notification. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md). Same text in ubbl2016_compendium_2020 p.15. Supersedes draft.storey, the placeholder opened before this clause was found."
+}

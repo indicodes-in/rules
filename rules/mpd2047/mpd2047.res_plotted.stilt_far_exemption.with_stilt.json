@@ -17,9 +17,9 @@
     "type": "boolean",
     "value": true
   },
-  "effective_from": null,
+  "effective_from": "2026-08-20",
   "effective_to": null,
-  "supersedes": null,
+  "supersedes": "ubbl2016_compendium_2020.res_plotted.stilt_far_exemption.stilt_parking",
   "citations": [
     {
       "doc_id": "mpd2047",
@@ -34,14 +34,29 @@
       "original_text": "If the building is constructed with stilt area as per UBBL and used for parking, such stilts shall not be included in FAR but will be counted towards the height of the building.",
       "original_lang": "en",
       "translated_text": null
+    },
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "7.15.1",
+      "page": 64,
+      "bbox": [
+        0.1532,
+        0.3646,
+        0.9225,
+        0.4004
+      ],
+      "original_text": "In case a building is to be constructed on individual plot with stilt floor, a minimum 2.4m height at soffit level of beam and maximum 2.7m height at soffit level of slab for providing parking space is permitted.",
+      "original_lang": "en",
+      "translated_text": null
     }
   ],
   "verification": {
-    "status": "draft",
-    "verified_by": null,
-    "verified_on": null,
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-15",
     "method": "llm_extraction_v1",
     "confidence": 0.9
   },
-  "notes": "Exemption conditional on stilt being constructed as per UBBL and used for parking; stilt still counts towards height."
+  "notes": "Exemption conditional on stilt being constructed as per UBBL and used for parking; stilt still counts towards height. 'As per UBBL' points to UBBL 7.15.1 (p.64, as amended by S.O. 1053(E)): at least 2.4 m to the soffit of the beam and at most 2.7 m to the soffit of the slab; 7.15.2 relaxes these heights for stack parking (building-rule data audit, BR-02).",
+  "user_caveat": "The stilt must be built as UBBL sets out (7.15.1: at least 2.4 m to the underside of the beam, at most 2.7 m to the underside of the slab; stack parking may differ) and used for parking. It still counts towards building height."
 }

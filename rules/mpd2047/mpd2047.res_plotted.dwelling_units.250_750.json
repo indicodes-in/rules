@@ -1,6 +1,6 @@
 {
   "rule_id": "mpd2047.res_plotted.dwelling_units.250_750",
-  "title": "Max 5 dwelling units for plots above 250 up to 750 sqm (Plotted Housing table, row 4)",
+  "title": "Max 5 dwelling units for plots above 250 up to 750 sqm (MPD-2047 Table 7.2, row 4)",
   "parameter": "dwelling_units",
   "applicability": {
     "land_use": "residential_plotted",
@@ -21,19 +21,19 @@
     "value": 5,
     "unit": "count"
   },
-  "effective_from": null,
+  "effective_from": "2026-08-20",
   "effective_to": null,
-  "supersedes": null,
+  "supersedes": "mpd2021_mod_2022.res_plotted.dwelling_units.250_750",
   "citations": [
     {
       "doc_id": "mpd2047",
-      "clause": null,
+      "clause": "Table 7.2 (DCN for Plotted Housing), row 4",
       "page": 177,
       "bbox": [
         0.2576,
-        0.1669,
-        0.8408,
-        0.1817
+        0.1632,
+        0.8357,
+        0.1822
       ],
       "original_text": "4. Above 250 up to 750 75 225 5",
       "original_lang": "en",
@@ -41,11 +41,11 @@
     }
   ],
   "verification": {
-    "status": "draft",
-    "verified_by": null,
-    "verified_on": null,
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
     "method": "llm_extraction_v1",
     "confidence": 0.9
   },
-  "notes": "Prose band 'Above 250 up to 750': 250 belongs to LOWER band, 750 belongs to THIS band."
+  "notes": "Read from the gazette text layer, p.177. Changed from MPD-2021 (6, mpd2021_mod_2022.res_plotted.dwelling_units.250_750). effective_from is the date of S.O. 4597(E) (notified 20.08.2026); the plan states no other commencement date. Band conditions copied from the MPD-2021 row it supersedes — the two tables print the same bands."
 }

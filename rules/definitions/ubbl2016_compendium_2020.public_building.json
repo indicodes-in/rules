@@ -1,0 +1,45 @@
+{
+  "definition_id": "ubbl2016_compendium_2020.public_building",
+  "term": "public building",
+  "aliases": [
+    "public building",
+    "Public buildings"
+  ],
+  "link_in_text": true,
+  "applies_to": {
+    "land_use": "residential_plotted",
+    "authority": "DDA"
+  },
+  "text": {
+    "original": "Public building: means a Government or private building, used or accessed by the public at large, including a building used for educational or vocational purposes, workplace, commercial activities, public utilities, religious, cultural, leisure or recreational activities, medical or health services, law enforcement agencies, reformatories or judicial foras, railway stations or platforms, roadways bus stands or terminus, airports or waterways.",
+    "original_lang": "en",
+    "translated": null
+  },
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes": null,
+  "citations": [
+    {
+      "doc_id": "ubbl2016_compendium_2020",
+      "clause": "1.4.135",
+      "page": 16,
+      "bbox": [
+        0.1442,
+        0.4182,
+        0.919,
+        0.4946
+      ],
+      "original_text": "Public building: means a Government or private building, used or accessed by the public at large, including a building used for educational or vocational purposes, workplace, commercial activities, public utilities, religious, cultural, leisure or recreational activities, medical or health services, law enforcement agencies, reformatories or judicial foras, railway stations or platforms, roadways bus stands or terminus, airports or waterways.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "draft",
+    "verified_by": null,
+    "verified_on": null,
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the English text of ubbl2016_compendium_2020, clause 1.4.135 by pipeline.definitions — no model involved. Confirm the text and box against the page. TODO(verify): clause added after 2016 (not in ubbl2016); find the notification among those listed on ubbl2016_compendium_2020 p.6 and record its date. Hindi text not read: the gazette's Hindi half uses a legacy font encoding (pipeline/README.md)."
+}

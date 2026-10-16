@@ -1,0 +1,51 @@
+{
+  "rule_id": "mpd2047.res_plotted.parking_ecs_per_100sqm.above_300",
+  "title": "1 ECS per 100 sqm FAR area for plots above 300 sqm (MPD-2047 Table 11.7, Plotted Housing c)",
+  "parameter": "parking_ecs_per_100sqm",
+  "applicability": {
+    "land_use": "residential_plotted",
+    "authority": "DDA",
+    "conditions": [
+      {
+        "fact": "plot_area_sqm",
+        "op": "gt",
+        "value": 300
+      }
+    ]
+  },
+  "output": {
+    "type": "formula",
+    "formula_id": "ecs_per_bua",
+    "params": {
+      "ecs_per_100sqm": 1
+    }
+  },
+  "effective_from": "2026-08-20",
+  "effective_to": null,
+  "supersedes": "ubbl2016_compendium_2020.res_plotted.parking_ecs_per_100sqm.above_300",
+  "citations": [
+    {
+      "doc_id": "mpd2047",
+      "clause": "Table 11.7 (Parking Norms), Plotted Housing c",
+      "page": 222,
+      "bbox": [
+        0.342,
+        0.4279,
+        0.696,
+        0.4666
+      ],
+      "original_text": "c. 1.0 ECS for every 100 sqm FAR area, in plots exceeding 300 sqm.",
+      "original_lang": "en",
+      "translated_text": null
+    }
+  ],
+  "verification": {
+    "status": "verified",
+    "verified_by": "Indicodes review",
+    "verified_on": "2026-10-11",
+    "method": "pdf_text_extraction_v1",
+    "confidence": null
+  },
+  "notes": "Read from the gazette text layer, p.222. Same rate as UBBL p.154 (viii.b); MPD-2047 measures it on FAR area, as the engine already does. Metro and MLP deductions are 'NP' (not permitted) for plotted housing. effective_from is the date of S.O. 4597(E), as for Table 7.2. Supersedes the UBBL rule for the same plots from that date.",
+  "user_caveat": "MPD-2047 Table 11.7: if the permissible FAR is not achieved with this parking norm, the norm of the smaller plot category applies. Not modelled; check with the sanctioning authority."
+}
