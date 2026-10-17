@@ -1,3 +1,4 @@
 # Checks only — no LLM, no network except the notice watcher.
-pymupdf>=1.23
-pytest>=8
+# Pinned to the versions the tests pass with; upgrade together, deliberately.
+pymupdf==1.23.8
+pytest==9.0.3

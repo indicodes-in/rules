@@ -84,3 +84,50 @@ def test_exit_code_says_new_nothing_or_blind():
     def down(url):
         raise OSError("403")
     assert watch.exit_code(watch.check([SOURCE], {}, fetch=down)) == 3
+
+
+def test_a_notice_already_raised_in_the_issue_is_not_raised_again():
+    raised = {
+        "https://dda.gov.in/sites/default/files/public-notice/ubbl_amend.pdf",
+        "https://dda.gov.in/sites/default/files/public-notice/dda_master_plan_notice.pdf",
+    }
+    report = watch.check([SOURCE], {}, fetch=lambda url: PAGE, reported=raised)
+    assert report["relevant"] == [] and report["already_reported"] == 2
+    assert watch.exit_code(report) == 0  # nothing new to raise
+    # Reporting is not reviewing: it is still new against seen.json.
+    assert any(i["href"].endswith("ubbl_amend.pdf") for i in report["sources"][0]["new"])
+
+
+def test_links_match_whatever_way_their_spaces_are_written():
+    page = '<table><tr><td>Bye-laws circular</td><td><a href="/files/Circular No 1.pdf">View</a></td></tr></table>'
+    raised = {"https://dda.gov.in/files/Circular%20No%201.pdf"}
+    report = watch.check([SOURCE], {}, fetch=lambda url: page, reported=raised)
+    assert report["already_reported"] == 1
+
+
+def test_one_source_failing_is_never_green():
+    other = {"id": "mcd", "name": "MCD", "url": "https://mcd.example/notices"}
+
+    def fetch(url):
+        if "mcd" in url:
+            raise OSError("timed out")
+        return PAGE
+
+    seen = {"dda_public_notice": [i["href"] for i in watch.items(PAGE, SOURCE["url"])]}
+    report = watch.check([SOURCE, other], seen, fetch=fetch)
+    assert watch.exit_code(report) == 4  # nothing new, but MCD was not seen
+    md = watch.markdown(report)
+    assert "MCD: **NOT checked** — timed out" in md
+    assert "DDA public notices: checked, 4 listed" in md
+
+
+def test_update_can_leave_an_unread_notice_unreviewed(tmp_path):
+    state = tmp_path / "seen.json"
+    report = watch.check([SOURCE], {}, fetch=lambda url: PAGE)
+    unread = "https://dda.gov.in/sites/default/files/public-notice/ubbl_amend.pdf"
+    watch.save_seen(state, {}, report, keep={unread})
+    saved = json.loads(state.read_text(encoding="utf-8"))
+    assert unread not in saved["dda_public_notice"] and len(saved["dda_public_notice"]) == 3
+    again = watch.check([SOURCE], saved, fetch=lambda url: PAGE)
+    assert unread in [i["href"] for i in again["relevant"]]
+    assert len(again["relevant"]) == 1

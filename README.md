@@ -47,8 +47,10 @@ past answer stays reproducible.
   working the same plots blind from the documents — has no cases yet
   (`data/validation/`).
 - **Every number cites its source.** Check it there.
-- **MPD-2047** was notified on 20 August 2026. Its rules are drafts here; which
-  plan governs a plot today is not settled by this data.
+- **MPD-2047** was notified on 20 August 2026. Its plotted-housing rules that
+  are verified here apply from that date, each superseding the MPD-2021 or
+  UBBL rule for the same plots; MPD-2047's other provisions are not yet read
+  (`rules/corpus-currency.json`).
 - Early design guidance, not building approval. Verify with the sanctioning authority.
 
 ## Use it

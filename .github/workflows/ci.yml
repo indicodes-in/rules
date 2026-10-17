@@ -21,6 +21,18 @@ jobs:
       - run: pnpm test
       # Schema, cross-file checks, band overlaps and gaps, page extracts.
       - run: pnpm rules:validate
+      # The independent benchmark is a separate question from the checks
+      # above: reported on every run, never inferred from a green build. It
+      # does not fail the build while it has no cases (data/validation/).
+      - name: Independent benchmark (reported, not a gate yet)
+        continue-on-error: true
+        run: |
+          set +e
+          pnpm --silent test:benchmark | tee benchmark.txt
+          code=${PIPESTATUS[0]}
+          { echo "### Independent benchmark"; echo '```'; tail -n 4 benchmark.txt; echo '```';
+            [ "$code" = "0" ] && echo "Launch gate: met." || echo "Launch gate: **not met** — see data/validation/README.md."; } >> "$GITHUB_STEP_SUMMARY"
+          exit "$code"
 
   pipeline:
     runs-on: ubuntu-latest

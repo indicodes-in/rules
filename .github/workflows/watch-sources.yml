@@ -2,9 +2,15 @@ name: Source watch
 
 # Weekly check of the pages where DDA and MCD announce changes (pipeline/watch.py).
 # New notices that may touch the rules open — or add to — one "source-watch"
-# issue. It never changes a rule: someone reads the notice, drafts any change,
-# has it verified, then runs `python -m pipeline.watch --update` and commits
+# issue. A notice already in that issue is not raised again; a source that
+# could not be checked fails the run and is named in the issue. It never
+# changes a rule: someone reads the notice, proposes any change, has it
+# checked, then runs `python -m pipeline.watch --update` and commits
 # sources/watch/seen.json.
+#
+# A schedule cannot report its own absence: GitHub delays scheduled runs and
+# disables them on a repository with no activity for 60 days. The weekly
+# routine includes a look at this workflow's last run.
 
 on:
   schedule:
@@ -23,13 +29,26 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      # Links already raised in the open issue: still unreviewed, not repeated.
+      - name: Collect notices already raised
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          open=$(gh issue list --label source-watch --state open --json number --jq '.[0].number' || true)
+          touch reported.txt
+          if [ -n "$open" ]; then
+            gh issue view "$open" --json body,comments --jq '.body, .comments[].body' \
+              | grep -oE 'https?://[^) ]+\.pdf' | sort -u > reported.txt || true
+          fi
       - id: watch
         run: |
           set +e
-          python -m pipeline.watch --markdown watch.md
+          python -m pipeline.watch --markdown watch.md --reported reported.txt
           echo "code=$?" >> "$GITHUB_OUTPUT"
-      - name: Raise new notices
-        if: steps.watch.outputs.code == '2'
+      # 2 = new notices; 4 = some sources could not be checked (named in the
+      # comment); both go to the one open issue.
+      - name: Raise new notices or unchecked sources
+        if: steps.watch.outputs.code == '2' || steps.watch.outputs.code == '4'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -40,9 +59,9 @@ jobs:
           else
             gh issue create --title "Notices to review ($(date -u +%F))" --label source-watch --body-file watch.md
           fi
-      # 3 = every source failed (e.g. the runner's network is blocked).
-      # Fail loudly: an outage must never read as "nothing new".
-      - name: Fail when the watch could not see
+      # 3 = every source failed; 4 = some did. Fail loudly: partial or no
+      # coverage must never read as "nothing new".
+      - name: Fail when the watch could not see everything
         if: steps.watch.outputs.code != '0' && steps.watch.outputs.code != '2'
         run: |
           cat watch.md

@@ -1,7 +1,14 @@
 # Contributing
 
-One rule holds everything up: **anyone can propose, nothing becomes verified
-until a second person has checked it against the cited page.**
+One rule holds everything up: **anyone can propose; nothing becomes verified
+until it has been checked against the cited page.**
+
+How that check happens today, plainly: the maintainer checks every rule
+against its page and signs it off under the `Indicodes review` role. A second,
+independent reader for each rule is the goal, not yet the practice — and the
+benchmark that would test the rules independently has no cases yet
+(`data/validation/`). "Verified" here means checked against the source page,
+not independently validated.
 
 ## Ways to help
 
@@ -12,8 +19,9 @@ until a second person has checked it against the cited page.**
    `"status": "draft"`. It must carry a citation — document, page, box and the
    verbatim words. Don't edit a verified rule: write a new one that supersedes
    it (`supersedes` pointer, new `effective_from`).
-3. **Review.** Check a draft against its page and sign it off (below). A
-   reviewer can never verify their own draft.
+3. **Review.** Check a draft against its page and say what you found on the
+   pull request. A rule you proposed is signed off by someone else — today,
+   the maintainer; as reviewers join, a second reader.
 4. **Register a source.** A new amendment, circular or notification goes in
    `sources/sources.json` with its file hash. The weekly watcher opens
    *source-watch* issues for new DDA and MCD notices — pick one up.
@@ -68,8 +76,9 @@ python -m pipeline.verify --by "<your reviewer role>" --rule <rule_id>
 ```
 
 Reviewers appear under a role (for example `Indicodes review`), not a personal
-name. Who holds each role is recorded privately by the maintainers. To become
-a reviewer, open an issue saying which documents you know well.
+name. Who holds each role is recorded privately by the maintainers; today one
+person holds it. To become a reviewer, open an issue saying which documents
+you know well.
 
 ## Conduct
 

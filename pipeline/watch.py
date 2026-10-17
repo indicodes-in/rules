@@ -16,11 +16,18 @@ MPD public-notice pages (built by script). Those stay a manual check.
 Usage (from the repo root; standard library only):
     python -m pipeline.watch                 # report what is new
     python -m pipeline.watch --update        # after reviewing: mark all as seen
-    python -m pipeline.watch --markdown out.md
+    python -m pipeline.watch --update --keep <url>   # …except a notice still unread
+    python -m pipeline.watch --markdown out.md --reported issue_links.txt
+
+Three states, kept apart (solo-maintainer audit, 17 Oct 2026): a source was
+checked; a notice was reported (it is in the open "Notices to review" issue,
+so it is not raised again); a person reviewed it (it is in seen.json, written
+only by --update after reading). Reporting never counts as reviewing.
 
 State: sources/watch/seen.json (committed) — every link already reviewed.
 Exits 2 when there is something new that looks relevant, so a scheduled job
-can raise it; 3 when every source failed, so an outage is never "all quiet".
+can raise it; 3 when every source failed, so an outage is never "all quiet";
+4 when some sources could not be checked, so partial coverage is never green.
 """
 
 import argparse
@@ -92,9 +99,23 @@ def fetch_url(url: str) -> str:
         return res.read().decode("utf-8", errors="replace")
 
 
-def check(sources: list[dict], seen: dict, fetch: Callable[[str], str] = fetch_url) -> dict:
+def link_key(href: str) -> str:
+    """One spelling per link: the issue text carries %20 where the page has spaces."""
+    return href.strip().replace(" ", "%20")
+
+
+def check(
+    sources: list[dict],
+    seen: dict,
+    fetch: Callable[[str], str] = fetch_url,
+    reported: set[str] | None = None,
+) -> dict:
+    """`reported`: links already raised in the open issue. Still unreviewed,
+    but not raised again every week."""
+    raised = {link_key(h) for h in (reported or set())}
     report_sources = []
     flagged = []
+    already = 0
     for src in sources:
         entry = {**src, "items": [], "new": [], "error": None}
         try:
@@ -111,9 +132,22 @@ def check(sources: list[dict], seen: dict, fetch: Callable[[str], str] = fetch_u
         known = set(seen.get(src["id"], []))
         entry["items"] = listed
         entry["new"] = [i for i in listed if i["href"] not in known]
-        flagged += [{**i, "source": src["name"]} for i in entry["new"] if relevant(i)]
+        for i in entry["new"]:
+            if not relevant(i):
+                continue
+            if link_key(i["href"]) in raised:
+                already += 1
+            else:
+                flagged.append({**i, "source": src["name"]})
         report_sources.append(entry)
-    return {"sources": report_sources, "relevant": flagged}
+    return {"sources": report_sources, "relevant": flagged, "already_reported": already}
+
+
+def load_reported(path: Path | None) -> set[str]:
+    """Links found in the open issue's body and comments (one per line)."""
+    if path is None or not path.exists():
+        return set()
+    return {line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()}
 
 
 def load_seen(path: Path) -> dict:
@@ -123,28 +157,36 @@ def load_seen(path: Path) -> dict:
         return {}
 
 
-def save_seen(path: Path, seen: dict, report: dict) -> None:
-    """Mark everything currently listed as reviewed. Sources that failed keep
-    their old state, so an outage never hides what it missed."""
+def save_seen(path: Path, seen: dict, report: dict, keep: set[str] | None = None) -> None:
+    """Mark everything currently listed as reviewed, except the links in
+    `keep` (read later). Sources that failed keep their old state, so an
+    outage never hides what it missed."""
+    unread = {link_key(h) for h in (keep or set())}
     merged = {k: list(v) for k, v in seen.items()}
     for src in report["sources"]:
         if src["error"]:
             continue
-        merged[src["id"]] = sorted(set(merged.get(src["id"], [])) | {i["href"] for i in src["items"]})
+        listed = {i["href"] for i in src["items"] if link_key(i["href"]) not in unread}
+        merged[src["id"]] = sorted(set(merged.get(src["id"], [])) | listed)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(merged, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def markdown(report: dict) -> str:
     lines = ["New notices that may touch the rules. Read each; if one amends MPD or the bye-laws, "
-             "draft the change (pipeline.extract) and have it verified. Then run "
-             "`python -m pipeline.watch --update` and commit `sources/watch/seen.json`.", ""]
-    for i in report["relevant"]:
-        lines.append(f"- **{i['source']}** — [{i['text'][:140]}]({i['href'].replace(' ', '%20')})")
-    failed = [s for s in report["sources"] if s["error"]]
-    if failed:
-        lines += ["", "Not checked this time:"]
-        lines += [f"- {s['name']}: {s['error']}" for s in failed]
+             "propose the change as CONTRIBUTING.md describes and have it checked against the page. "
+             "When read, run `python -m pipeline.watch --update` (with `--keep <url>` for any not yet "
+             "read) and commit `sources/watch/seen.json`.", ""]
+    if report["relevant"]:
+        for i in report["relevant"]:
+            lines.append(f"- **{i['source']}** — [{i['text'][:140]}]({link_key(i['href'])})")
+    else:
+        lines.append("No new notices this time.")
+    if report.get("already_reported"):
+        lines += ["", f"{report['already_reported']} notice(s) already listed in this issue are still unreviewed."]
+    lines += ["", "Sources this run:"]
+    for s in report["sources"]:
+        lines.append(f"- {s['name']}: " + (f"**NOT checked** — {s['error']}" if s["error"] else f"checked, {len(s['items'])} listed"))
     lines += ["", "Not watched by this job (check by hand): the e-Gazette search, and DDA's MPD "
               "public-notice pages, which a plain fetch cannot list."]
     return "\n".join(lines) + "\n"
@@ -155,17 +197,21 @@ def exit_code(report: dict) -> int:
     relevant is new; 0: nothing new that matters."""
     if report["sources"] and all(s["error"] for s in report["sources"]):
         return 3
+    if any(s["error"] for s in report["sources"]):
+        return 4
     return 2 if report["relevant"] else 0
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--update", action="store_true", help="mark everything listed now as reviewed")
+    ap.add_argument("--keep", action="append", default=[], help="with --update: a link still unread (repeatable)")
     ap.add_argument("--markdown", help="write the relevant-new list here (for an issue body)")
+    ap.add_argument("--reported", help="file of links already raised in the open issue, one per line")
     args = ap.parse_args(argv)
 
     seen = load_seen(SEEN_PATH)
-    report = check(SOURCES, seen)
+    report = check(SOURCES, seen, reported=load_reported(Path(args.reported) if args.reported else None))
     for s in report["sources"]:
         status = f"error: {s['error']}" if s["error"] else f"{len(s['items'])} listed, {len(s['new'])} new"
         print(f"{s['name']}: {status}")
@@ -176,7 +222,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.markdown:
         Path(args.markdown).write_text(markdown(report), encoding="utf-8")
     if args.update:
-        save_seen(SEEN_PATH, seen, report)
+        save_seen(SEEN_PATH, seen, report, keep=set(args.keep))
         print(f"Marked as reviewed → {SEEN_PATH.relative_to(REPO_ROOT)}")
         return 0
     return exit_code(report)
